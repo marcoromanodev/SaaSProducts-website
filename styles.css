@@ -1,0 +1,185 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Animated Background */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('path-to-your-animated-background.gif') center/cover no-repeat;
+    z-index: -1;
+    animation: animatedBG 30s linear infinite;
+}
+
+@keyframes animatedBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hero Section Styling */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-title {
+    position: relative;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 1;
+}
+
+.top-line {
+    font-size: 5em;
+    display: block;
+    margin-bottom: 0.2em;
+    letter-spacing: 0.1em;
+}
+
+.bottom-line {
+    font-size: 2em;
+    display: block;
+    letter-spacing: 0.2em;
+}
+
+/* Scroll Indicator Styling */
+.scroll-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.mouse-icon {
+    width: 20px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 15px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.mouse-icon::before {
+    content: '';
+    width: 4px;
+    height: 10px;
+    background: white;
+    border-radius: 2px;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+    0% {
+        top: 5px;
+    }
+    100% {
+        top: 18px;
+    }
+}
+
+/* Section Styling */
+section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #222;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+    position: relative;
+    z-index: 1;
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Services Section Background */
+.services-section {
+    background-color: #333;
+}
+
+/* Footer */
+.footer {
+    padding: 20px 0;
+    background-color: #000;
+    text-align: center;
+    font-size: 1em;
+    position: relative;
+    z-index: 1;
+}
+
+.social-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    color: #aaa; /* Optional: to change color slightly on hover */
+}
+
+/* Active class for when the section is visible */
+.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Line crossing effect */
+.line-through {
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition: width 1.5s ease-in-out;
+    bottom: 0;
+    left: 0;
+}
+
+.active .line-through {
+    width: 100%;
+}
