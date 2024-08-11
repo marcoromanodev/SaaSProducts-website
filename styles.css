@@ -42,6 +42,7 @@ body {
     align-items: center;
     text-align: center;
     position: relative;
+    padding: 0 20px;
 }
 
 .hero-title {
@@ -62,6 +63,23 @@ body {
     font-size: 2em;
     display: block;
     letter-spacing: 0.2em;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 0 10px;
+    }
+
+    .top-line {
+        font-size: 3em; /* Adjusted for mobile */
+        letter-spacing: 0.05em;
+    }
+
+    .bottom-line {
+        font-size: 1.5em; /* Adjusted for mobile */
+        letter-spacing: 0.1em;
+    }
 }
 
 /* Scroll Indicator Styling */
@@ -178,6 +196,10 @@ section p {
     transition: width 1.5s ease-in-out;
     bottom: 0;
     left: 0;
+}
+
+.active .line-through {
+    width: 100%;
 }
 
 .active .line-through {
