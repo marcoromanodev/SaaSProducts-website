@@ -47,7 +47,6 @@ body {
 
 .hero-title {
     position: relative;
-    text-transform: uppercase;
     text-align: center;
     z-index: 1;
 }
@@ -55,14 +54,25 @@ body {
 .top-line {
     font-size: 5em;
     display: block;
-    margin-bottom: 0.2em;
+    margin-bottom: 0; /* Remove margin to bring the subtitle directly below */
     letter-spacing: 0.1em;
+    text-transform: none; /* Ensure lowercase 'aa' */
+}
+
+.subtitle {
+    font-size: 1em; /* Smaller font size for subtitle */
+    margin-top: 0; /* Ensure there is no gap at the top */
+    letter-spacing: 0.1em;
+    display: block;
+    color: #fff; /* White color */
+    text-transform: none; /* Keep exact casing */
 }
 
 .bottom-line {
     font-size: 2em;
     display: block;
     letter-spacing: 0.2em;
+    margin-top: 0.5em; /* Small space above Productized Co */
 }
 
 /* Responsive adjustments for mobile devices */
@@ -72,13 +82,20 @@ body {
     }
 
     .top-line {
-        font-size: 3em; /* Adjusted for mobile */
+        font-size: 3em;
         letter-spacing: 0.05em;
+        margin-bottom: 0; /* Maintain no margin on mobile */
+    }
+
+    .subtitle {
+        font-size: 0.8em; /* Adjust subtitle size for mobile */
+        margin-top: 0; /* No gap on mobile as well */
     }
 
     .bottom-line {
-        font-size: 1.5em; /* Adjusted for mobile */
+        font-size: 1.5em;
         letter-spacing: 0.1em;
+        margin-top: 0.3em; /* Slightly reduce the space above Productized Co */
     }
 }
 
@@ -196,10 +213,6 @@ section p {
     transition: width 1.5s ease-in-out;
     bottom: 0;
     left: 0;
-}
-
-.active .line-through {
-    width: 100%;
 }
 
 .active .line-through {
