@@ -1,4 +1,4 @@
-5/* General Reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -946,6 +946,10 @@ div.line-through {
 #contact-form {
     max-width: 600px;
     margin: 0 auto;
+    padding: 20px; /* Add padding to give breathing room */
+    background-color: #333; /* Background color for better visibility */
+    border-radius: 8px; /* Soft corners for the form */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 #contact-form input, #contact-form textarea {
@@ -957,6 +961,11 @@ div.line-through {
     background-color: #555;
     color: #fff;
     font-size: 1em;
+}
+
+#contact-form textarea {
+    resize: vertical; /* Allow textarea to resize vertically */
+    min-height: 100px; /* Ensure textarea has minimum height */
 }
 
 /* Contact Form Send Button Styling */
@@ -980,13 +989,43 @@ div.line-through {
     transform: translateY(-5px); /* Adds slight movement effect on hover */
 }
 
-/* Responsive adjustments for smaller screens */
+/* Mobile-specific styles for contact form */
 @media (max-width: 768px) {
+    #contact-form {
+        max-width: 100%; /* Take full width on mobile */
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+
+    #contact-form input, #contact-form textarea {
+        font-size: 0.9em; /* Slightly smaller font size for mobile */
+        padding: 8px; /* Reduce padding for inputs on mobile */
+    }
+
     #contact-form button {
-        padding: 10px 15px;
-        font-size: 1em;
+        padding: 10px 15px; /* Adjust button padding */
+        font-size: 0.95em; /* Slightly smaller button font for mobile */
+    }
+
+    #contact-form textarea {
+        min-height: 80px; /* Reduce minimum height on mobile */
     }
 }
+
+/* Centering adjustments for mobile view */
+.contact-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.contact-section h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
 
 .hidden {
     display: none;
