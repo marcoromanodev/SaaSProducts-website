@@ -167,7 +167,6 @@
 
 <!-- Contact Us Section -->
 <section class="contact-section" id="contact">
-    <div class="container">
         <h2>Consult With Us</h2>
         <p>If you have any questions about our services or want to know more about how SaaS Productized Co. can help your business grow, feel free to reach out to us.</p>
         <br><br>
@@ -175,10 +174,11 @@
         <!-- Contact Form -->
         <form id="contact-form">
             <input type="email" id="user_email" placeholder="Enter your email" required>
-            
-            <!-- New Dropdown for Package Selection -->
-            <select id="package_select" name="package">
-                <option value="Not Sure" selected>Not Sure</option>
+
+            <!-- New Package Dropdown -->
+            <label for="package_select">Which Package are you interested in?</label>
+            <select id="package_select" required>
+                <option value="Not Sure">Not Sure</option>
                 <option value="Basic Package">Basic Package</option>
                 <option value="Plus Package">Plus Package</option>
                 <option value="Deluxe Package">Deluxe Package</option>
@@ -187,7 +187,6 @@
             <textarea id="message" placeholder="Enter your message" required></textarea>
             <button type="submit">Send</button>
         </form>
-    </div>
 </section>
     
     <div class="line-through"></div>
@@ -232,6 +231,10 @@
         });
         
         
+    </script>
+</body>
+</html>
+
     </script>
 </body>
 </html>
