@@ -8,23 +8,44 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-/* Ensure the logo link text is always ice white */
-.logo-container a {
-    color: #fff; /* Ice white color for the logo link */
-    text-decoration: none; /* No underline */
-}
+        /* Ensure the logo link text is always ice white */
+        .logo-container a {
+            color: #fff;
+            text-decoration: none;
+        }
 
-.logo-container a:visited {
-    color: #fff; /* Ensures visited links stay white */
-}
-
-.logo-container a:hover {
-    color: #fff; /* Keep white on hover */
-}
-
-.logo-container a:active {
-    color: #fff; /* Keep white when active */
-}
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero-section {
+                transform: scale(1);
+                margin: 0 auto;
+                padding: 20px;
+                text-align: center;
+            }
+            .hero-title {
+                font-size: 1.8em;
+                line-height: 1.2;
+            }
+            .packages-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .package {
+                width: 90%;
+                margin-bottom: 20px;
+                padding: 15px;
+            }
+            .add-to-cart-btn {
+                padding: 10px;
+                font-size: 1em;
+            }
+            .scroll-indicator {
+                bottom: 20px;
+                right: 20px;
+                font-size: 0.8em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -55,7 +76,7 @@
     </h1>
 </div>
 
-
+<div class="line-through"></div>
    <!-- What You Get Section -->
 <section class="features-section">
     <h2>What You Get With Each Quality Website</h2>
@@ -229,7 +250,48 @@
             document.querySelectorAll('.price.with-design-fee').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.price.without-design-fee').forEach(el => el.classList.remove('hidden'));
         });
-        
+        document.addEventListener('DOMContentLoaded', function () {
+        // Scroll to Contact Form
+        function scrollToContactForm() {
+            const contactSection = document.querySelector('.contact-section');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Pre-fill Package Selection
+        function fillPackageDropdown() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedPackage = urlParams.get('package');
+            if (selectedPackage) {
+                const packageSelect = document.getElementById('package_select');
+                if (packageSelect) {
+                    packageSelect.value = selectedPackage;
+                }
+            }
+        }
+
+        // Handle "Consult Us" button click
+        document.querySelectorAll('.add-to-cart-btn').forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const packageType = button.closest('.package').dataset.package;
+                window.location.href = `index.html#contact?package=${encodeURIComponent(packageType)}`;
+
+                // Scroll and fill the form after the redirect
+                setTimeout(() => {
+                    scrollToContactForm();
+                    fillPackageDropdown();
+                }, 500);
+            });
+        });
+
+        // Automatically scroll to the contact form and pre-fill the package dropdown if redirected
+        if (window.location.hash === '#contact') {
+            scrollToContactForm();
+            fillPackageDropdown();
+        }
+    });
         
     </script>
 </body>
