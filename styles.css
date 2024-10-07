@@ -7,14 +7,79 @@
 
 html, body {
     height: 100%;
+    max-width: 100%;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .hero-section {
+        transform: scale(1); /* Scale normally for mobile */
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 1.8em; /* Smaller font for mobile */
+        line-height: 1.2;
+    }
+
+    .packages-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center packages */
+    }
+
+    .package {
+        width: 90%; /* Reduce width for mobile */
+        margin-bottom: 20px; /* Add space between packages */
+        padding: 15px; /* Smaller padding */
+    }
+
+    .package h3 {
+        font-size: 1.6em; /* Smaller title */
+    }
+
+    .price {
+        font-size: 1.2em; /* Adjust price font */
+    }
+
+    /* Contact form on mobile */
+    #contact-form {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    /* Buttons and other elements adjustments */
+    .add-to-cart-btn {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    /* Ensure smooth scrolling indicator fits */
+    .scroll-indicator {
+        bottom: 20px;
+        right: 20px;
+        font-size: 0.8em; /* Adjust font size */
+    }
 }
 
 body {
     background-color: #000;
     color: #fff;
+    max-width: 100%;
+    overflow-x: hidden;
 }
+
+/* Adjustments to ensure text does not overflow */
+h1, h2, h3, p, .package {
+    word-wrap: break-word; /* Break long words */
+    max-width: 100%;
+    margin: 0 auto; /* Center content */
+}
+
 
 /* Animated Background */
 .animated-bg {
