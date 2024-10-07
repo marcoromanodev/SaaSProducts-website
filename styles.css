@@ -1,4 +1,4 @@
-/* General Reset */
+5/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -22,7 +22,7 @@ html, body {
     }
 
     .hero-title {
-        font-size: 1.7em; /* Smaller font for mobile */
+        font-size: 1.5em; /* Smaller font for mobile */
         line-height: 1.2;
     }
 
