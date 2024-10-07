@@ -43,37 +43,48 @@ body {
     text-align: center;
     position: relative;
     padding: 0 20px;
+    margin-top: 0;
+    background: none; /* No background */
 }
 
 .hero-title {
     position: relative;
     text-align: center;
     z-index: 1;
+    margin-bottom: 20px;
+    text-decoration: none; /* Ensure no default lines */
 }
 
+/* Top Line (Main Title) */
 .top-line {
     font-size: 5em;
     display: block;
-    margin-bottom: 0; /* Remove margin to bring the subtitle directly below */
+    margin-bottom: 0;
     letter-spacing: 0.1em;
-    text-transform: none; /* Ensure lowercase 'aa' */
+    text-transform: none; /* Keep lowercase 'aa' in 'SaaS' */
+    text-decoration: none; /* Remove any text decoration */
 }
 
+/* Subtitle (Optional Information) */
 .subtitle {
-    font-size: 1em; /* Smaller font size for subtitle */
-    margin-top: 0; /* Ensure there is no gap at the top */
+    font-size: 1em;
+    margin-top: 0;
     letter-spacing: 0.1em;
     display: block;
-    color: #fff; /* White color */
-    text-transform: none; /* Keep exact casing */
+    color: #fff;
+    text-transform: none;
+    text-decoration: none; /* Ensure no underline */
 }
 
+/* Bottom Line (Company Name) */
 .bottom-line {
     font-size: 2em;
     display: block;
     letter-spacing: 0.2em;
-    margin-top: 0.5em; /* Small space above Productized Co */
+    margin-top: 0.5em;
+    text-decoration: none; /* Remove any underlines */
 }
+
 
 /* Responsive adjustments for mobile devices */
 @media (max-width: 768px) {
@@ -84,18 +95,15 @@ body {
     .top-line {
         font-size: 3em;
         letter-spacing: 0.05em;
-        margin-bottom: 0; /* Maintain no margin on mobile */
     }
 
     .subtitle {
-        font-size: 0.8em; /* Adjust subtitle size for mobile */
-        margin-top: 0; /* No gap on mobile as well */
+        font-size: 0.8em;
     }
 
     .bottom-line {
         font-size: 1.5em;
         letter-spacing: 0.1em;
-        margin-top: 0.3em; /* Slightly reduce the space above Productized Co */
     }
 }
 
@@ -204,17 +212,728 @@ section p {
     transform: translateY(0);
 }
 
-/* Line crossing effect */
-.line-through {
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background-color: #fff;
-    transition: width 1.5s ease-in-out;
-    bottom: 0;
-    left: 0;
+/* Custom Analytics Section */
+.analytics-section {
+    padding: 60px 20px;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
 }
 
+.analytics-item {
+    margin-bottom: 40px;
+}
+
+.analytics-item h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.analytics-item p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #aaa;
+}
+
+/* Packages Section Styling */
+.packages-section {
+    padding: 60px 20px;
+    background-color: #111;
+    text-align: center;
+    color: #fff;
+}
+
+.packages-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.package {
+    background-color: #222;
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package h3 {
+    font-size: 2.2em; /* Slightly larger */
+    margin-bottom: 15px;
+    color: #fff; /* Ensure it's bright white */
+}
+
+.package p {
+    font-size: 1.4em; /* Increased font size */
+    margin-bottom: 20px;
+    color: #f0f0f0; /* Brighter white */
+}
+
+.package ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.package li {
+    font-size: 1.3em; /* Increase font size */
+    margin-bottom: 10px;
+    color: #f0f0f0; /* Brighter white for visibility */
+}
+
+.package strong {
+    font-size: 1.5em; /* Slightly larger */
+    color: #fff;
+}
+
+.package:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Services Section Styling */
+.services-section {
+    padding: 60px 20px;
+    background-color: #333;
+    text-align: center;
+    color: #fff;
+}
+
+.services-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.service {
+    background-color: #222;
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service h3 {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.service p {
+    font-size: 1.2em;
+    color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.service a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #444;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.service a:hover {
+    background-color: #666;
+}
+
+.service:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .packages-section, .services-section {
+        padding: 40px 10px;
+    }
+
+    .package, .service {
+        padding: 20px;
+    }
+
+    .package h3, .service h3 {
+        font-size: 1.8em;
+    }
+
+    .package p, .service p {
+        font-size: 1em;
+    }
+
+    .package ul li, .service p {
+        font-size: 1em;
+    }
+
+    .scroll-indicator {
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+/* Intro Section Styling */
+.intro-section {
+    padding: 60px 20px;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.intro-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.intro-section p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Features Section Styling */
+.features-section {
+    padding: 60px 20px;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.features-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between the rectangles */
+}
+
+.feature-box {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 8px;
+    width: 30%; /* Each box will take up 30% of the container width */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.feature-box p {
+    font-size: 1.1em;
+    color: #ccc;
+    line-height: 1.6em;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .features-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .feature-box {
+        width: 100%; /* Full width for mobile */
+    }
+}
+
+/* Pricing Section Styling */
+.pricing-section {
+    padding: 60px 20px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+.pricing-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.pricing-table {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.pricing-option {
+    background-color: #222;
+    padding: 30px;
+    margin: 20px;
+    border-radius: 8px;
+    width: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-option h3 {
+    font-size: 2.2em; /* Slightly larger */
+    margin-bottom: 15px;
+    color: #fff; /* Bright white */
+}
+
+.pricing-option p {
+    font-size: 1.4em; /* Increased for better visibility */
+    color: #f0f0f0; /* Brighter white */
+    margin-bottom: 20px;
+}
+
+.pricing-option:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    .pricing-table {
+        flex-direction: column;
+    }
+
+    .pricing-option {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+/* Pricing Table Styling */
+.pricing-section {
+    padding: 60px 20px;
+    background-color: #111;
+    text-align: center;
+    color: #fff;
+}
+
+.pricing-table {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.pricing-option {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-option h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.pricing-option p {
+    font-size: 1.2em;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.pricing-option:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustment for Pricing section */
+@media (max-width: 768px) {
+    .pricing-table {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pricing-option {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Header Styling */
+header h1 {
+    font-size: 2.5em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #ccc;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Toggle Button Styling */
+.pricing-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.toggle-btn {
+    background-color: #444;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Styling for the 'With Design Fee' button */
+#with-design-fee.active {
+    background: linear-gradient(145deg, rgba(255, 223, 0, 0.9), rgba(255, 215, 0, 0.7)); /* Flashy real gold */
+    color: #fff;
+    box-shadow: 0 5px 10px rgba(255, 223, 0, 0.5); /* Golden glow */
+}
+
+#with-design-fee:hover {
+    background-color: rgba(255, 223, 0, 0.9); /* Brighter gold on hover */
+    box-shadow: 0 10px 20px rgba(255, 223, 0, 0.9); /* Stronger gold shadow */
+}
+
+/* Styling for the 'Without Design Fee' button */
+#without-design-fee.active {
+    background-color: rgba(135, 206, 235, 0.9); /* Icy blue active state */
+    color: #fff;
+    box-shadow: 0 5px 10px rgba(135, 206, 235, 0.5); /* Blue glow */
+}
+
+#without-design-fee:hover {
+    background-color: rgba(135, 206, 235, 0.9); /* Icy blue on hover */
+    box-shadow: 0 10px 20px rgba(135, 206, 235, 0.9); /* Blue shadow on hover */
+}
+
+/* Inactive button styling (removes light) */
+.toggle-btn:not(.active) {
+    background-color: #444; /* Dark background for inactive state */
+    box-shadow: none; /* No glow */
+}
+
+/* Container for the packages to align them in a row */
+.packages-container {
+    display: flex;
+    justify-content: center; /* Center the boxes horizontally */
+    align-items: flex-start; /* Align the boxes at the top */
+    gap: 20px; /* Space between the boxes */
+    flex-wrap: wrap; /* Ensure they wrap on smaller screens */
+    margin: 0 auto; /* Center the container */
+    max-width: 1200px; /* Set a max width for larger screens */
+    padding: 20px;
+}
+
+/* General package styling */
+.basic-package, .plus-package, .deluxe-package {
+    background-color: rgba(255, 69, 0, 0.6); /* Base color */
+    width: 30%; /* Set width to 30% to fit 3 boxes side by side */
+    padding: 30px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(255, 69, 0, 0.4);
+    text-align: center;
+}
+
+/* Hover effects */
+.basic-package:hover, .plus-package:hover, .deluxe-package:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 69, 0, 0.6);
+}
+
+/* Specific background colors for each package */
+.basic-package {
+    background-color: rgba(255, 69, 0, 0.6); /* Fire-like neon orange */
+    box-shadow: 0 10px 20px rgba(255, 69, 0, 0.4);
+}
+
+.plus-package {
+    background: linear-gradient(145deg, rgba(255, 223, 0, 0.9), rgba(255, 215, 0, 0.6)); /* Flashy gold */
+    box-shadow: 0 10px 20px rgba(255, 223, 0, 0.7);
+}
+
+.deluxe-package {
+    background-color: rgba(128, 0, 128, 0.6); /* Transparent regal purple */
+    box-shadow: 0 10px 20px rgba(128, 0, 128, 0.4);
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 768px) {
+    .packages-container {
+        flex-direction: column; /* Stack the boxes vertically */
+    }
+    
+    .basic-package, .plus-package, .deluxe-package {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+
+/* Update Contact Us Button Style */
+.basic-package .add-to-cart-btn, 
+.plus-package .add-to-cart-btn, 
+.deluxe-package .add-to-cart-btn {
+    font-size: 1.2em; /* Double the size */
+    padding: 15px 30px; /* Larger padding for bigger buttons */
+    background-color: #444; /* Match the button color from services section */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.basic-package .add-to-cart-btn:hover, 
+.plus-package .add-to-cart-btn:hover, 
+.deluxe-package .add-to-cart-btn:hover {
+    background-color: #666;
+    transform: translateY(-5px); /* Adds movement on hover */
+}
+
+/* Ensure the button text is centered */
+.add-to-cart-btn {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+/* Logo Container */
+.logo-container {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    position: relative; /* Ensures z-index works */
+    z-index: 10; /* Higher z-index to make sure it’s clickable and hovers properly */
+}
+
+.logo-container a {
+    display: block; /* Make the entire container clickable */
+    color: #fff; /* Ice white color for the logo link */
+    text-decoration: none; /* Remove underline from the link */
+    padding: 10px 0; /* Ensure padding remains to keep the spacing */
+    margin: auto; /* Center the logo */
+    width: fit-content; /* Keep the logo centered and not stretched */
+    z-index: 11; /* Ensure the link is above everything else */
+}
+
+/* Ensure the link remains white when visited, hovered, and active */
+.logo-container a:visited {
+    color: #fff; /* Keep white even after the link is visited */
+}
+
+.logo-container a:hover {
+    color: #fff; /* Keep white on hover */
+}
+
+.logo-container a:active {
+    color: #fff; /* Keep white when active/clicked */
+}
+
+.logo-container a:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    transition: transform 0.3s ease; /* Smooth transition effect */
+}
+
+/* Adjustments to remove extra space */
+.hero-section {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* Hero Title Styling */
+.hero-title, 
+.hero-title .top-line, 
+.hero-title .subtitle, 
+.hero-title .bottom-line {
+    color: #fff !important; /* Ice white for all parts of the title */
+    text-decoration: none; /* Remove underline or any text decoration */
+    z-index: 12; /* Make sure the title remains on top */
+}
+
+/* General line-through styling */
+.line-through {
+    background-color: #fff;
+    height: 2px;
+    width: 0; /* Start as 0 for animation */
+    margin-top: 10px;
+    display: block;
+    transition: width 1.5s ease-in-out; /* Smooth transition */
+    z-index: 1; /* Ensure line is above background but below content */
+    position: relative; /* Relative positioning for proper stacking */
+}
+
+/* Active line-through expands to full width */
 .active .line-through {
     width: 100%;
+}
+
+/* Hero title specific line-through */
+.hero-title .line-through {
+    background-color: #fff !important; /* Ensure white color for hero */
+    height: 2px;
+    width: 100%; /* Full width for hero title */
+    margin-top: 10px;
+    position: relative; /* Ensure proper stacking */
+    z-index: 2; /* Ensure it's above adjacent content */
+}
+
+/* Hero title hover effect */
+.hero-title:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    transition: transform 0.3s ease;
+}
+
+/* No underline and ensure text remains white */
+.hero-title a, 
+.hero-title a:visited, 
+.hero-title a:hover, 
+.hero-title a:active {
+    text-decoration: none; /* No underline */
+    color: #fff; /* Ice white */
+}
+
+/* Logo container */
+.logo-container {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    position: relative; /* For stacking */
+    z-index: 10; /* Ensure it's in front */
+}
+
+/* Logo link */
+.logo-container a {
+    display: block; /* Block to ensure full logo clickability */
+    color: #fff; /* White text */
+    text-decoration: none;
+    width: fit-content;
+    margin: auto;
+    padding: 10px 0;
+}
+
+/* Hover effect for logo */
+.logo-container a:hover {
+    transform: scale(1.05); /* Zoom effect */
+    transition: transform 0.3s ease;
+}
+
+/* Ensure the sections have proper spacing */
+section {
+    min-height: 100px; /* Prevent collapsing */
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure line-through divs are visible */
+div.line-through {
+    background-color: white;
+    height: 2px;
+    margin: 20px auto; /* Center the line */
+    width: 100%; /* Full width across screen */
+    z-index: 1; /* Ensure above background */
+}
+
+
+/* Instant Paid Traffic Button Styling */
+.instant-traffic-section .button {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #444;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+/* Hover Effect for the Button */
+.instant-traffic-section .button:hover {
+    background-color: #666;
+    transform: translateY(-5px); /* Adds slight movement effect on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .instant-traffic-section .button {
+        padding: 10px 15px; /* Slightly smaller padding on smaller screens */
+        font-size: 1em;
+    }
+}
+
+/* Contact Form Styling */
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact-form input, #contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #555;
+    color: #fff;
+    font-size: 1em;
+}
+
+/* Contact Form Send Button Styling */
+#contact-form button {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #444;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Hover Effect for the Send Button */
+#contact-form button:hover {
+    background-color: #666;
+    transform: translateY(-5px); /* Adds slight movement effect on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    #contact-form button {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+#package_select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #555;
+    color: #fff;
+    font-size: 1em;
 }
