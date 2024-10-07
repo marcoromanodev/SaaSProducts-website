@@ -7,50 +7,200 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    /* Logo Container */
+    .logo-container {
+        width: 100%;
+        text-align: center;
+        padding-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .logo-container a {
+        display: inline-block;
+        color: #fff; /* Ice white color for the logo link */
+        text-decoration: none !important; /* Remove underline from the link */
+    }
+
+    /* Ensure the link remains white when visited, hovered, and active */
+    .logo-container a:visited {
+        color: #fff !important; /* Keep white even after the link is visited */
+        text-decoration: none !important; /* Ensure no underline on visited state */
+    }
+
+    .logo-container a:hover {
+        color: #fff; /* Keep white on hover */
+        transform: scale(1.05); /* Slight zoom on hover */
+        transition: transform 0.3s ease; /* Smooth transition effect */
+        text-decoration: none !important; /* No underline */
+    }
+
+    .logo-container a:active {
+        color: #fff !important; /* Keep white when active/clicked */
+        text-decoration: none !important; /* No underline */
+    }
+
+    /* Hero Title Styling */
+    .hero-title, 
+    .hero-title .top-line, 
+    .hero-title .subtitle, 
+    .hero-title .bottom-line {
+        color: #fff !important; /* Ice white for all parts of the title */
+        text-decoration: none !important; /* Ensure no underline */
+    }
+
+    /* Ensure no text-decoration for any <a> inside the hero section */
+    .hero-section a {
+        color: #fff !important; /* Ensure white for any link in hero section */
+    }
+
+    /* Line-through styling */
+    .line-through {
+        background-color: #fff !important; /* Make sure the line is ice white */
+        height: 2px;
+        width: 100%;
+        margin-top: 10px;
+        display: block;
+    }
+    </style>
 </head>
 <body>
     <!-- Animated Background -->
     <div class="animated-bg"></div>
 
-    <!-- Hero Section -->
-    <div class="hero-section">
-        <h1 class="hero-title">
-            <span class="top-line">SaaS</span>
-            <span class="subtitle">(Software as a Service)</span>
-            <span class="bottom-line">Productized Co.</span>
-            <div class="line-through"></div>
-        </h1>
-        <div class="scroll-indicator" id="scroll-indicator">
-            <span>Scroll Down</span>
-            <div class="mouse-icon"></div>
-        </div>
+    <!-- Clickable Logo Container for Hero Section -->
+    <a href="index.html" class="logo-container" style="text-decoration: none !important; /* Ensure no underline */">
+        <section class="hero-section">
+            <h1 class="hero-title">
+                <span class="top-line">SaaS</span>
+                <span class="subtitle">(Software as a Service)</span>
+                <span class="bottom-line">Productized Co</span>
+                <div class="line-through"></div>
+            </h1>
+        </section>
+    </a>
+
+    <!-- Scroll Indicator placed outside of the hero section for better positioning -->
+    <div class="scroll-indicator" id="scroll-indicator">
+        <span>Scroll Down</span>
+        <div class="mouse-icon"></div>
     </div>
 
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>We are a B2B Micro SaaS company dedicated to transforming high-performance software solutions into intuitive, scalable products.</p>
-            <div class="line-through"></div>
-        </div>
-    </section>
+    <!-- Divider between Hero and About Us -->
+    <div class="line-through" style="z-index: 1000;"></div>
+
+<!-- About Section -->
+<section class="about-section">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>We are a B2B SaaS company dedicated to transforming high-performance software solutions into intuitive, scalable products. We provide tailored solutions to help businesses succeed through innovation and technology.</p>
+        <br>
+        <p>Our mission is to leverage cutting-edge technology to deliver services that empower businesses to succeed in an increasingly digital world. Whether you're looking to enhance your online presence, boost your sales with targeted ads, or dive into the future of Web3.0 and Artificial Intelligence, we're here to help you innovate and thrive.</p>
+    </div>
+
+<!-- Embedded Google Map Section -->
+<div class="map-section">
+    <div class="container map-container" style="text-align: center; padding: 20px;">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11877.425176039964!2d-87.6253308!3d41.90669885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd35a4496d0ed%3A0xace21a6c41f409f4!2sGold%20Coast%2C%20Chicago%2C%20IL%2060610!5e0!3m2!1sen!2sus!4v1728264141626!5m2!1sen!2sus" 
+            width="400" 
+            height="250" 
+            style="border:0; margin: 0 auto;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</div>
+</section>
+
+    <!-- Divider between About Us and Services -->
+    <div class="line-through" style="z-index: 1000;"></div>
 
     <!-- Services Section -->
     <section class="services-section">
-        <div class="container">
-            <h2>Our Services</h2>
-            <p>We offer a range of cutting-edge services including high-end software development, productization, and consulting.</p>
-            <div class="line-through"></div>
+        <h2>Our Services</h2>
+        <div class="service">
+        <h3><i class="fas fa-code"></i> Software Development</h3>
+        <p>Custom software development tailored to your business needs. Build scalable and efficient systems for long-term success.</p>
+        <a href="#">View Packages</a>
+    </div>
+        <div class="service">
+            <h3><i class="fas fa-paint-brush"></i> Web Design</h3>
+            <p>Beautiful, innovative, creative, and fully responsive web design. We bring life to your goals and vision.</p>
+            <a href="website_packages.html">View Packages</a>
+        </div>
+        
+        <div class="service">
+        <h3><i class="fas fa-cube"></i> Web3.0</h3>
+        <p>Unlock the potential of decentralized web technology and integrate your business into the next phase of the internet.</p>
+        <a href="#">Explore Web3.0</a>
+    </div>
+
+    <div class="service">
+        <h3><i class="fas fa-robot"></i> Artificial Intelligence</h3>
+        <p>Implement AI-driven solutions to streamline your operations, analyze data, and predict trends for a smarter business future.</p>
+        <a href="#">Discover AI Solutions</a>
+    </div>
+
+        <div class="service">
+            <h3><i class="fas fa-map-marker-alt"></i> Google My Business</h3>
+            <p>Complete Google My Business listing setup and management services. Fully optimized for results!</p>
+            <a href="#">View Options</a>
+        </div>
+
+        <div class="service">
+            <h3><i class="fas fa-chart-line"></i> Custom Analytics</h3>
+            <p>Detailed monthly analytics reports provide at-a-glance overviews of your business growth.</p>
+            <a href="#">Learn More</a>
+        </div>
+
+        <div class="service">
+            <h3><i class="fas fa-ad"></i> FB and Google Ads</h3>
+            <p>We design your ads to reach the BEST audience for your business. Properly targeted ads lead to sales.</p>
+            <a href="#">Learn More</a>
         </div>
     </section>
 
+    <!-- Divider between Services and Contact Us -->
+    <div class="line-through"></div>
+
+<!-- Contact Us Section -->
+<section class="contact-section" id="contact">
+    <div class="container">
+        <h2>Consult With Us</h2>
+        <p>If you have any questions about our services or want to know more about how SaaS Productized Co. can help your business grow, feel free to reach out to us.</p>
+        <br><br>
+        
+        <!-- Contact Form -->
+        <form id="contact-form">
+            <input type="email" id="user_email" placeholder="Enter your email" required>
+            
+            <!-- New Dropdown for Package Selection -->
+            <select id="package_select" name="package">
+                <option value="Not Sure" selected>Not Sure</option>
+                <option value="Basic Package">Basic Package</option>
+                <option value="Plus Package">Plus Package</option>
+                <option value="Deluxe Package">Deluxe Package</option>
+            </select>
+
+            <textarea id="message" placeholder="Enter your message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</section>
+    
+    <div class="line-through"></div>
+
+
+
     <!-- Footer -->
     <footer class="footer">
-        <p>2025 SaaS Productized Co.</p>
+        <p>&copy; 2025 SaaS Productized Co. All Rights Reserved.</p>
         <div class="social-icons">
             <a href="https://x.com/SaaSProductized" target="_blank">
-                        <img src="xlogo.png" alt="X logo" style="width: 24px; height: 24px;">
-                    </a>
+                <img src="xlogo.png" alt="X logo" style="width: 24px; height: 24px;">
+            </a>
             <a href="https://www.instagram.com/saasproducts" target="_blank">
                 <i class="fab fa-instagram"></i>
             </a>
@@ -61,5 +211,27 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // EmailJS script for contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.sendForm('your_service_id', 'your_template_id', this)
+                .then(function() {
+                    alert('Email sent successfully!');
+                }, function(error) {
+                    alert('Failed to send email: ' + JSON.stringify(error));
+                });
+        });
+
+        // Smooth Scroll Script for Scroll Indicator
+        document.getElementById('scroll-indicator').addEventListener('click', function() {
+            window.scrollTo({
+                top: document.querySelector('.about-section').offsetTop,
+                behavior: 'smooth'
+            });
+        });
+        
+        
+    </script>
 </body>
 </html>
