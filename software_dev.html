@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Development - SaaS Productized Co.</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Ensure the logo link text is always ice white */
+        .logo-container a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            margin-top: -100px;
+            padding: 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .line-through {
+            width: 100px;
+            height: 3px;
+            background: #fff;
+            margin: 15px auto;
+        }
+
+        /* Features and Service Section Styling */
+        .features-section, .service-section {
+            padding: 60px 20px;
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+        }
+
+        .features-section h2, .service-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .features-container, .service-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .feature-box, .service-box {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 8px;
+            width: 30%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-box:hover, .service-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-box h3, .service-box h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p, .service-box p {
+            font-size: 1.1em;
+            color: #ccc;
+            line-height: 1.6em;
+        }
+
+        /* Button Styling */
+        .button {
+            background-color: #444;
+            color: #fff;
+            padding: 15px 30px;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #666;
+            transform: translateY(-5px); /* Add slight movement on hover */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .features-container, .service-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .feature-box, .service-box {
+                width: 100%;
+            }
+        }
+
+        /* Footer Styling */
+        .footer {
+            padding: 20px;
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+        }
+
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Logo Container at the Top -->
+    <header class="logo-container">
+        <a href="index.html" style="text-decoration: none;">
+            <div class="hero-section" style="transform: scale(0.4); margin: -350px auto;">
+                <h1 class="hero-title">
+                    <span class="top-line">SaaS</span>
+                    <span class="bottom-line">Productized Co</span>
+                    <div class="line-through"></div>
+                </h1>
+            </div>
+        </a>
+    </header>
+
+    <!-- Hero Section for Software Development -->
+    <div class="hero-section" style="margin-top: -100px; margin-bottom: 0; padding: 0;">
+        <h1 class="hero-title">
+            <span class="top-line">Software Development</span>
+            <span class="subtitle">Custom solutions tailored to your business.</span>
+            <div class="line-through"></div>
+        </h1>
+    </div>
+
+    <div class="line-through"></div>
+
+    <!-- Software Development Service Section -->
+    <div class="service-section">
+        <h2>Software Development Solutions</h2>
+        <p>Technological innovation that transcends digital. Create robust and future-proof software solutions customized to your business needs.</p>
+        <p>Software development is about identifying your business goals, knowing your pain points, and developing solutions that address your unique challenges.</p>
+        <p>We use artificial intelligence and other cutting-edge technologies to design, build, and evolve world-class digital end-to-end solutions for our clients. From human interface design to scalable AI platforms, our full-stack capabilities unleash better and more personalized experiences.</p>
+
+        <a href="index.html#contact" class="button">Consult Us</a>
+    </div>
+
+    <div class="line-through"></div>
+
+    <!-- Detailed Service Descriptions -->
+    <div class="service-section">
+        <h2>We deliver end-to-end services for your business</h2>
+        <div class="service-container">
+            <div class="service-box">
+                <h3>Digital Consulting & Advisory</h3>
+                <p>Our experts excel in bridging your business and tech strategy gaps. We craft tailored plans, including AI-based tool implementation and strategies for AI in financial services, among other industries.</p>
+            </div>
+            <div class="service-box">
+                <h3>Multi-Experience Composable Solutions</h3>
+                <p>We delight end users with rich, interconnected experiences across web, mobile, conversational interfaces, digital twin, IoT, and AR applications.</p>
+            </div>
+            <div class="service-box">
+                <h3>Ecosystem Evolution</h3>
+                <p>We help companies evolve and optimize their applications by modernizing and maintaining technical ecosystems and migrating to advanced technologies like AI models for finance.</p>
+            </div>
+            <div class="service-box">
+                <h3>Low-Code Solutions</h3>
+                <p>We bring the power of low-code and no-code solutions to accelerate time-to-market and address present and future challenges, reducing skill-set requirements for developers and boosting productivity.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="line-through"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 SaaS Productized Co.</p>
+        <div class="social-icons">
+            <a href="https://x.com/SaaSProductized" target="_blank">
+                <img src="xlogo.png" alt="X logo" style="width: 24px; height: 24px;">
+            </a>
+            <a href="https://www.instagram.com/saasproducts" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
