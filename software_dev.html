@@ -26,6 +26,39 @@
             font-size: 2.5em;
             font-weight: bold;
         }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero-section {
+                transform: scale(1);
+                margin: 0 auto;
+                padding: 20px;
+                text-align: center;
+            }
+            .hero-title {
+                font-size: 1.5em;
+                line-height: 1.2;
+            }
+            .packages-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .package {
+                width: 90%;
+                margin-bottom: 20px;
+                padding: 15px;
+            }
+            .add-to-cart-btn {
+                padding: 10px;
+                font-size: 1em;
+            }
+            .scroll-indicator {
+                bottom: 20px;
+                right: 20px;
+                font-size: 0.8em;
+            }
+        }
 
         .subtitle {
             font-size: 1.2em;
@@ -214,6 +247,10 @@
             </a>
         </div>
     </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
     <script src="script.js"></script>
 </body>
