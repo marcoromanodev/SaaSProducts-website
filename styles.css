@@ -1112,8 +1112,6 @@ div.line-through {
 .package,
 .service-box,
 .feature-box {
-    background-color: #fff;
-    color: #000;
     position: relative;
     overflow: hidden;
 }
@@ -1151,16 +1149,4 @@ div.line-through {
 .feature-box > * {
     position: relative;
     z-index: 1;
-}
-
-/* Ensure text is visible on white backgrounds */
-.service h3, .service p,
-.package h3, .package p, .package li,
-.service-box h3, .service-box p,
-.feature-box h3, .feature-box p,
-.service-section h2, .service-section p,
-.services-section h2, .services-section p,
-.packages-section h2, .packages-section p,
-.analytics-section h2, .analytics-section p {
-    color: #000;
 }
