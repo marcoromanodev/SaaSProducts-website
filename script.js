@@ -21,44 +21,37 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (scrollIndicator && scrollText) {
-        const updateScrollIndicator = () => {
-            const scrollTop = window.scrollY;
-            const viewportHeight = window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight;
-            const threshold = Math.min(100, docHeight - viewportHeight - 1);
+        // Detect if the user has reached (or is very close to) the bottom of the page
+        const isAtBottom = () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const viewport = document.documentElement.clientHeight;
+            const height = document.documentElement.scrollHeight;
+            return scrollTop + viewport >= height - 2;
+        };
 
-            if (docHeight <= viewportHeight) {
+        const updateScrollIndicator = () => {
+            const height = document.documentElement.scrollHeight;
+            const viewport = document.documentElement.clientHeight;
+            if (height <= viewport + 5) {
                 scrollText.innerText = "Scroll Down";
                 return;
             }
-
-            if (scrollTop + viewportHeight >= docHeight - threshold) {
-                scrollText.innerText = "Scroll Up";
-            } else {
-                scrollText.innerText = "Scroll Down";
-            }
+            scrollText.innerText = isAtBottom() ? "Scroll Up" : "Scroll Down";
         };
 
         window.addEventListener("scroll", updateScrollIndicator);
         window.addEventListener("load", updateScrollIndicator);
         window.addEventListener("resize", updateScrollIndicator);
+        window.addEventListener("orientationchange", updateScrollIndicator);
         updateScrollIndicator();
 
         scrollIndicator.addEventListener('click', function() {
-            const scrollTop = window.scrollY;
-            const viewportHeight = window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight;
-            const threshold = Math.min(100, docHeight - viewportHeight - 1);
-
-            if (docHeight > viewportHeight && scrollTop + viewportHeight >= docHeight - threshold) {
+            if (isAtBottom()) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 const about = document.querySelector('.about-section');
                 if (about) {
-                    window.scrollTo({
-                        top: about.offsetTop,
-                        behavior: 'smooth'
-                    });
+                    about.scrollIntoView({ behavior: 'smooth' });
                 }
             }
         });
