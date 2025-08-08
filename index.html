@@ -215,31 +215,5 @@
 
       <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
       <script src="script.js"></script>
-      <script>
-          emailjs.init('service_ni1jgq2');
-
-          const contactForm = document.getElementById('contact-form');
-          if (contactForm) {
-              contactForm.addEventListener('submit', function(event) {
-                  event.preventDefault();
-                  emailjs.sendForm('service_ni1jgq2', 'template_rd9i0ip', this)
-                      .then(function() {
-                          alert('Email sent successfully!');
-                      }, function(error) {
-                          alert('Failed to send email: ' + JSON.stringify(error));
-                      });
-              });
-          }
-
-          const scrollIndicator = document.getElementById('scroll-indicator');
-          if (scrollIndicator) {
-              scrollIndicator.addEventListener('click', function() {
-                  window.scrollTo({
-                      top: document.querySelector('.about-section').offsetTop,
-                      behavior: 'smooth'
-                  });
-              });
-          }
-      </script>
   </body>
   </html>

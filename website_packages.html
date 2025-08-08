@@ -227,77 +227,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        // EmailJS script
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            emailjs.sendForm('your_service_id', 'your_template_id', this)
-                .then(function() {
-                    alert('Email sent successfully!');
-                }, function(error) {
-                    alert('Failed to send email: ' + JSON.stringify(error));
-                });
-        });
-
-        // Toggle for pricing options
-        document.getElementById('with-design-fee').addEventListener('click', function() {
-            document.querySelectorAll('.price.with-design-fee').forEach(el => el.classList.remove('hidden'));
-            document.querySelectorAll('.price.without-design-fee').forEach(el => el.classList.add('hidden'));
-        });
-
-        document.getElementById('without-design-fee').addEventListener('click', function() {
-            document.querySelectorAll('.price.with-design-fee').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.price.without-design-fee').forEach(el => el.classList.remove('hidden'));
-        });
-        document.addEventListener('DOMContentLoaded', function () {
-        // Scroll to Contact Form
-        function scrollToContactForm() {
-            const contactSection = document.querySelector('.contact-section');
-            if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Pre-fill Package Selection
-        function fillPackageDropdown() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const selectedPackage = urlParams.get('package');
-            if (selectedPackage) {
-                const packageSelect = document.getElementById('package_select');
-                if (packageSelect) {
-                    packageSelect.value = selectedPackage;
-                }
-            }
-        }
-
-        // Handle "Consult Us" button click
-        document.querySelectorAll('.add-to-cart-btn').forEach(function (button) {
-            button.addEventListener('click', function (event) {
-                event.preventDefault();
-                const packageType = button.closest('.package').dataset.package;
-                window.location.href = `index.html#contact?package=${encodeURIComponent(packageType)}`;
-
-                // Scroll and fill the form after the redirect
-                setTimeout(() => {
-                    scrollToContactForm();
-                    fillPackageDropdown();
-                }, 500);
-            });
-        });
-
-        // Automatically scroll to the contact form and pre-fill the package dropdown if redirected
-        if (window.location.hash === '#contact') {
-            scrollToContactForm();
-            fillPackageDropdown();
-        }
-    });
-        
-    </script>
-</body>
-</html>
-
-        
-    </script>
 </body>
 </html>

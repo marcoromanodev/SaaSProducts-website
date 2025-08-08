@@ -36,6 +36,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         window.addEventListener("scroll", updateScrollIndicator);
         updateScrollIndicator();
+
+        scrollIndicator.addEventListener('click', function() {
+            const about = document.querySelector('.about-section');
+            if (about) {
+                window.scrollTo({
+                    top: about.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
     }
 });
 
@@ -69,6 +79,20 @@ if (withDesign && withoutDesign) {
 
 // Pre-fill the package dropdown and handle 'Consult Us' button clicks
 document.addEventListener('DOMContentLoaded', function() {
+    emailjs.init('YOUR_PUBLIC_KEY');
+
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.sendForm('service_ni1jgq2', 'template_rd9i0ip', this)
+                .then(function() {
+                    alert('Email sent successfully!');
+                }, function(error) {
+                    alert('Failed to send email: ' + JSON.stringify(error));
+                });
+        });
+    }
 
     // Function to scroll to the contact section
     function scrollToContactForm() {
