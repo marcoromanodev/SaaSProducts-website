@@ -21,17 +21,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (scrollIndicator && scrollText) {
-        const isAtBottom = () =>
-            Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
+        const shouldScrollUp = () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            return scrollTop >= scrollHeight * 0.75;
+        };
 
         const updateScrollIndicator = () => {
-            const docHeight = document.documentElement.scrollHeight;
-            if (docHeight <= window.innerHeight) {
-                scrollText.innerText = "Scroll Down";
-                return;
-            }
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
 
-            scrollText.innerText = isAtBottom() ? "Scroll Up" : "Scroll Down";
+            if (scrollTop <= 0) {
+                scrollText.innerText = "Scroll Down";
+            } else if (scrollTop >= scrollHeight * 0.75) {
+                scrollText.innerText = "Scroll Up";
+            } else {
+                scrollText.innerText = "Scroll Down";
+            }
         };
 
         window.addEventListener("scroll", updateScrollIndicator);
@@ -40,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateScrollIndicator();
 
         scrollIndicator.addEventListener('click', function() {
-            if (isAtBottom()) {
+            if (shouldScrollUp()) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 const about = document.querySelector('.about-section');
