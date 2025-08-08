@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const shouldScrollUp = () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            return scrollTop >= scrollHeight - 5;
+            return scrollTop >= scrollHeight * 0.75;
         };
 
         const updateScrollIndicator = () => {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (scrollTop <= 0) {
                 scrollIndicator.classList.remove('scroll-up');
                 scrollText.innerText = "Scroll Down";
-            } else if (scrollTop >= scrollHeight - 5) {
+            } else if (scrollTop >= scrollHeight * 0.75) {
                 scrollIndicator.classList.add('scroll-up');
                 scrollText.innerText = "Scroll Up";
             } else {
@@ -55,6 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const about = document.querySelector('.about-section');
                 if (about) {
                     about.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
                 }
             }
         });
