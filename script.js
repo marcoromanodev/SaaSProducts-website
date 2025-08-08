@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const bottomThreshold = 50;
 
         const isAtBottom = () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
             const documentHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
-            return scrollTop + windowHeight >= documentHeight - bottomThreshold;
+            return documentHeight - (scrollTop + windowHeight) <= bottomThreshold;
         };
 
         const updateScrollIndicator = () => {
