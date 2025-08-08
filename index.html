@@ -143,24 +143,24 @@
         <a href="#">Discover AI Solutions</a>
     </div>
 
-        <div class="service">
-            <h3><i class="fas fa-map-marker-alt"></i> Google My Business</h3>
-            <p>Complete Google My Business listing setup and management services. Fully optimized for results!</p>
-            <a href="#">View Options</a>
-        </div>
+          <div class="service">
+              <h3><i class="fas fa-map-marker-alt"></i> Google My Business</h3>
+              <p>Complete Google My Business listing setup and management services. Fully optimized for results!</p>
+              <a href="google_my_business.html">View Options</a>
+          </div>
 
-        <div class="service">
-            <h3><i class="fas fa-chart-line"></i> Custom Analytics</h3>
-            <p>Detailed monthly analytics reports provide at-a-glance overviews of your business growth.</p>
-            <a href="#">Learn More</a>
-        </div>
+          <div class="service">
+              <h3><i class="fas fa-chart-line"></i> Custom Analytics</h3>
+              <p>Detailed monthly analytics reports provide at-a-glance overviews of your business growth.</p>
+              <a href="custom_analytics.html">Learn More</a>
+          </div>
 
-        <div class="service">
-            <h3><i class="fas fa-ad"></i> FB and Google Ads</h3>
-            <p>We design your ads to reach the BEST audience for your business. Properly targeted ads lead to sales.</p>
-            <a href="#">Learn More</a>
-        </div>
-    </section>
+          <div class="service">
+              <h3><i class="fas fa-ad"></i> FB and Google Ads</h3>
+              <p>We design your ads to reach the BEST audience for your business. Properly targeted ads lead to sales.</p>
+              <a href="fb_google_ads.html">Learn More</a>
+          </div>
+      </section>
 
     <!-- Divider between Services and Contact Us -->
     <div class="line-through"></div>
@@ -209,28 +209,33 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script>
-        // EmailJS script for contact form submission
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            emailjs.sendForm('your_service_id', 'your_template_id', this)
-                .then(function() {
-                    alert('Email sent successfully!');
-                }, function(error) {
-                    alert('Failed to send email: ' + JSON.stringify(error));
-                });
-        });
+      <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+      <script src="script.js"></script>
+      <script>
+          emailjs.init('your_public_key');
 
-        // Smooth Scroll Script for Scroll Indicator
-        document.getElementById('scroll-indicator').addEventListener('click', function() {
-            window.scrollTo({
-                top: document.querySelector('.about-section').offsetTop,
-                behavior: 'smooth'
-            });
-        });
-        
-        
-    </script>
-</body>
-</html>
+          const contactForm = document.getElementById('contact-form');
+          if (contactForm) {
+              contactForm.addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  emailjs.sendForm('your_service_id', 'your_template_id', this)
+                      .then(function() {
+                          alert('Email sent successfully!');
+                      }, function(error) {
+                          alert('Failed to send email: ' + JSON.stringify(error));
+                      });
+              });
+          }
+
+          const scrollIndicator = document.getElementById('scroll-indicator');
+          if (scrollIndicator) {
+              scrollIndicator.addEventListener('click', function() {
+                  window.scrollTo({
+                      top: document.querySelector('.about-section').offsetTop,
+                      behavior: 'smooth'
+                  });
+              });
+          }
+      </script>
+  </body>
+  </html>

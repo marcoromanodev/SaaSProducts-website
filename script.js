@@ -1,11 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const sections = document.querySelectorAll("section, .hero-section");
     const scrollIndicator = document.getElementById("scroll-indicator");
-    const scrollText = scrollIndicator.querySelector("span");
-
-    // Select the footer and logo container sections
-    const contactSection = document.querySelector(".footer");
-    const logoContainer = document.querySelector(".logo-container");
+    const scrollText = scrollIndicator ? scrollIndicator.querySelector("span") : null;
 
     // Create an Intersection Observer to animate sections when in view
     const observer = new IntersectionObserver((entries) => {
@@ -24,57 +20,52 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 
-    // Function to update the scroll indicator text and behavior
-    const updateScrollIndicator = () => {
-        let scrollTop = window.scrollY;
-        let viewportHeight = window.innerHeight;
+    if (scrollIndicator && scrollText) {
+        const updateScrollIndicator = () => {
+            const scrollTop = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const threshold = 100;
 
-        // Get the positions of contact section (footer) and logo container
-        const contactRect = contactSection.getBoundingClientRect();
-        const logoRect = logoContainer.getBoundingClientRect();
+            if (scrollTop + viewportHeight >= docHeight - threshold) {
+                scrollText.innerText = "Scroll Up";
+            } else if (scrollTop <= threshold) {
+                scrollText.innerText = "Scroll Down";
+            }
+        };
 
-        // Define an even larger buffer for earlier switching
-        const earlyTrigger = 300; // Reduced buffer for even earlier switching
-
-        // Switch to "Scroll Up" when nearing the contact section (footer)
-        if (contactRect.top - earlyTrigger < viewportHeight) {
-            scrollText.innerText = "Scroll Up";
-        } 
-        // Switch to "Scroll Down" when nearing the top of the page (logo container)
-        else if (logoRect.bottom + earlyTrigger > 0) {
-            scrollText.innerText = "Scroll Down";
-        }
-    };
-
-    // Listen for scroll events and update the scroll indicator
-    window.addEventListener("scroll", updateScrollIndicator);
-
-    // Run the function initially to set the correct text
-    updateScrollIndicator();
+        window.addEventListener("scroll", updateScrollIndicator);
+        updateScrollIndicator();
+    }
 });
 
 // Toggle between design fee options
-document.getElementById('with-design-fee').addEventListener('click', function() {
-    document.getElementById('without-design-fee').classList.remove('active');
-    this.classList.add('active');
-    document.querySelectorAll('.with-design-fee').forEach(function(el) {
-        el.classList.remove('hidden');
-    });
-    document.querySelectorAll('.without-design-fee').forEach(function(el) {
-        el.classList.add('hidden');
-    });
-});
+const withDesign = document.getElementById('with-design-fee');
+const withoutDesign = document.getElementById('without-design-fee');
 
-document.getElementById('without-design-fee').addEventListener('click', function() {
-    document.getElementById('with-design-fee').classList.remove('active');
-    this.classList.add('active');
-    document.querySelectorAll('.with-design-fee').forEach(function(el) {
-        el.classList.add('hidden');
+if (withDesign && withoutDesign) {
+    withDesign.addEventListener('click', function() {
+        withoutDesign.classList.remove('active');
+        this.classList.add('active');
+        document.querySelectorAll('.with-design-fee').forEach(function(el) {
+            el.classList.remove('hidden');
+        });
+        document.querySelectorAll('.without-design-fee').forEach(function(el) {
+            el.classList.add('hidden');
+        });
     });
-    document.querySelectorAll('.without-design-fee').forEach(function(el) {
-        el.classList.remove('hidden');
+
+    withoutDesign.addEventListener('click', function() {
+        withDesign.classList.remove('active');
+        this.classList.add('active');
+        document.querySelectorAll('.with-design-fee').forEach(function(el) {
+            el.classList.add('hidden');
+        });
+        document.querySelectorAll('.without-design-fee').forEach(function(el) {
+            el.classList.remove('hidden');
+        });
     });
-});
+}
 
 // Pre-fill the package dropdown and handle 'Consult Us' button clicks
 document.addEventListener('DOMContentLoaded', function() {
@@ -122,20 +113,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Ensure sections are revealed as you scroll
-const sections = document.querySelectorAll('section');
-const options = {
-    threshold: 0.5
-};
+const revealSections = document.querySelectorAll('section');
+const revealOptions = { threshold: 0.5 };
 
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target); // Stop observing once active
-        }
-    });
-}, options);
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
+    }
+  });
+}, revealOptions);
 
-sections.forEach(section => {
-    observer.observe(section);
-});
+revealSections.forEach(section => revealObserver.observe(section));
