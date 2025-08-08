@@ -228,6 +228,21 @@ body::before {
     }
 }
 
+/* Map Section */
+.map-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.about-map {
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    border: 0;
+    display: block;
+    margin: 0 auto;
+}
+
 /* Section Styling */
 section {
     padding: 60px 20px;

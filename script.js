@@ -21,22 +21,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (scrollIndicator && scrollText) {
-        const updateScrollIndicator = () => {
-            const scrollTop = window.scrollY;
-            const viewportHeight = window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight;
-            const threshold = Math.min(100, docHeight - viewportHeight - 1);
+        const isAtBottom = () =>
+            Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
 
-            if (docHeight <= viewportHeight) {
+        const updateScrollIndicator = () => {
+            const docHeight = document.documentElement.scrollHeight;
+            if (docHeight <= window.innerHeight) {
                 scrollText.innerText = "Scroll Down";
                 return;
             }
 
-            if (scrollTop + viewportHeight >= docHeight - threshold) {
-                scrollText.innerText = "Scroll Up";
-            } else {
-                scrollText.innerText = "Scroll Down";
-            }
+            scrollText.innerText = isAtBottom() ? "Scroll Up" : "Scroll Down";
         };
 
         window.addEventListener("scroll", updateScrollIndicator);
@@ -45,20 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
         updateScrollIndicator();
 
         scrollIndicator.addEventListener('click', function() {
-            const scrollTop = window.scrollY;
-            const viewportHeight = window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight;
-            const threshold = Math.min(100, docHeight - viewportHeight - 1);
-
-            if (docHeight > viewportHeight && scrollTop + viewportHeight >= docHeight - threshold) {
+            if (isAtBottom()) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 const about = document.querySelector('.about-section');
                 if (about) {
-                    window.scrollTo({
-                        top: about.offsetTop,
-                        behavior: 'smooth'
-                    });
+                    about.scrollIntoView({ behavior: 'smooth' });
                 }
             }
         });
