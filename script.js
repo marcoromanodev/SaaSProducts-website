@@ -23,18 +23,20 @@ document.addEventListener("DOMContentLoaded", function () {
     if (scrollIndicator && scrollText) {
         const shouldScrollUp = () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            return scrollTop >= scrollHeight * 0.75;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            return scrollTop + windowHeight >= documentHeight - 5;
         };
 
         const updateScrollIndicator = () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
 
             if (scrollTop <= 0) {
                 scrollIndicator.classList.remove('scroll-up');
                 scrollText.innerText = "Scroll Down";
-            } else if (scrollTop >= scrollHeight * 0.75) {
+            } else if (scrollTop + windowHeight >= documentHeight - 5) {
                 scrollIndicator.classList.add('scroll-up');
                 scrollText.innerText = "Scroll Up";
             } else {
