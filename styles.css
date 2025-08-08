@@ -725,6 +725,8 @@ header p {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 10px 20px rgba(255, 69, 0, 0.4);
     text-align: center;
+    position: relative; /* Needed for Tron overlay */
+    overflow: hidden; /* Ensure overlay stays within box */
 }
 
 /* Hover effects */
@@ -747,6 +749,40 @@ header p {
 .deluxe-package {
     background-color: rgba(128, 0, 128, 0.6); /* Transparent regal purple */
     box-shadow: 0 10px 20px rgba(128, 0, 128, 0.4);
+}
+
+/* Tron grid overlay for packages */
+.basic-package::before,
+.plus-package::before,
+.deluxe-package::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 255, 0.15) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move 30s linear infinite;
+    z-index: 0;
+    pointer-events: none; /* Allow interaction with content */
+}
+
+.basic-package > *,
+.plus-package > *,
+.deluxe-package > * {
+    position: relative;
+    z-index: 1; /* Place content above Tron overlay */
+}
+
+/* Disclaimer styling */
+.price-disclaimer {
+    font-size: 0.9em;
+    margin-top: 20px;
+    color: #ccc;
+    font-style: italic;
 }
 
 /* Responsive adjustments for mobile screens */
