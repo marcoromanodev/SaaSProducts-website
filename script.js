@@ -21,22 +21,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (scrollIndicator && scrollText) {
+        // Distance from the bottom of the page (in pixels) before switching the indicator
+        const bottomThreshold = 100;
+
+        const getDocumentHeight = () => Math.max(
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight,
+            document.body.offsetHeight,
+            document.documentElement.offsetHeight,
+            document.documentElement.clientHeight
+        );
+
         const shouldScrollUp = () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
-            return scrollTop + windowHeight >= documentHeight - 5;
+            const documentHeight = getDocumentHeight();
+            return scrollTop + windowHeight >= documentHeight - bottomThreshold;
         };
 
         const updateScrollIndicator = () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
+            const documentHeight = getDocumentHeight();
 
             if (scrollTop <= 0) {
                 scrollIndicator.classList.remove('scroll-up');
                 scrollText.innerText = "Scroll Down";
-            } else if (scrollTop + windowHeight >= documentHeight - 5) {
+            } else if (scrollTop + windowHeight >= documentHeight - bottomThreshold) {
                 scrollIndicator.classList.add('scroll-up');
                 scrollText.innerText = "Scroll Up";
             } else {
