@@ -27,8 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const isAtBottom = () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-            const documentHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
-            return documentHeight - (scrollTop + windowHeight) <= bottomThreshold;
+            const documentHeight = Math.max(
+                document.documentElement.scrollHeight,
+                document.body.scrollHeight,
+                document.documentElement.offsetHeight,
+                document.body.offsetHeight
+            );
+            return scrollTop + windowHeight >= documentHeight - bottomThreshold;
         };
 
         const updateScrollIndicator = () => {
