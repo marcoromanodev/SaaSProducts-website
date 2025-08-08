@@ -79,7 +79,7 @@ if (withDesign && withoutDesign) {
 
 // Pre-fill the package dropdown and handle 'Consult Us' button clicks
 document.addEventListener('DOMContentLoaded', function() {
-    emailjs.init('YOUR_PUBLIC_KEY');
+    emailjs.init('Y-XtDjX-x7GuFRumI');
 
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
