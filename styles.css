@@ -228,6 +228,19 @@ body::before {
     }
 }
 
+@keyframes scroll-up {
+    0% {
+        top: 18px;
+    }
+    100% {
+        top: 5px;
+    }
+}
+
+.scroll-indicator.scroll-up .mouse-icon::before {
+    animation: scroll-up 1.5s infinite;
+}
+
 /* Map Section */
 .map-container {
     padding: 20px;
