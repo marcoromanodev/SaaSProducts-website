@@ -21,10 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (scrollIndicator && scrollText) {
-        // Distance from the bottom of the page (in pixels) before switching the indicator
-        const bottomThreshold = 50;
-
-        const isAtBottom = () => {
+        const hasPassedHalfway = () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
             const documentHeight = Math.max(
@@ -33,16 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.documentElement.offsetHeight,
                 document.body.offsetHeight
             );
-            return scrollTop + windowHeight >= documentHeight - bottomThreshold;
+            const scrollableHeight = documentHeight - windowHeight;
+            return scrollableHeight > 0 && scrollTop >= scrollableHeight / 2;
         };
 
         const updateScrollIndicator = () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-
-            if (scrollTop <= 0) {
-                scrollIndicator.classList.remove('scroll-up');
-                scrollText.innerText = "Scroll Down";
-            } else if (isAtBottom()) {
+            if (hasPassedHalfway()) {
                 scrollIndicator.classList.add('scroll-up');
                 scrollText.innerText = "Scroll Up";
             } else {
@@ -57,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateScrollIndicator();
 
         scrollIndicator.addEventListener('click', function () {
-            if (isAtBottom()) {
+            if (hasPassedHalfway()) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 const about = document.querySelector('.about-section');
