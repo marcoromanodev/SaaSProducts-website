@@ -1102,3 +1102,65 @@ div.line-through {
     color: #fff;
     font-size: 1em;
 }
+
+/* Grid overlay for content sections and boxes */
+.service-section,
+.services-section,
+.packages-section,
+.analytics-section,
+.service,
+.package,
+.service-box,
+.feature-box {
+    background-color: #fff;
+    color: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-section::before,
+.services-section::before,
+.packages-section::before,
+.analytics-section::before,
+.service::before,
+.package::before,
+.service-box::before,
+.feature-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 255, 0.15) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+    pointer-events: none;
+    animation: grid-move 30s linear infinite;
+}
+
+.service-section > *,
+.services-section > *,
+.packages-section > *,
+.analytics-section > *,
+.service > *,
+.package > *,
+.service-box > *,
+.feature-box > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure text is visible on white backgrounds */
+.service h3, .service p,
+.package h3, .package p, .package li,
+.service-box h3, .service-box p,
+.feature-box h3, .feature-box p,
+.service-section h2, .service-section p,
+.services-section h2, .services-section p,
+.packages-section h2, .packages-section p,
+.analytics-section h2, .analytics-section p {
+    color: #000;
+}
