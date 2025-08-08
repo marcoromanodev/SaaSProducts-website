@@ -137,10 +137,10 @@
         <a href="web3.html">Explore Web3.0</a>
     </div>
 
-    <div class="service">
+        <div class="service">
         <h3><i class="fas fa-robot"></i> Artificial Intelligence</h3>
         <p>Implement AI-driven solutions to streamline your operations, analyze data, and predict trends for a smarter business future.</p>
-        <a href="#">Discover AI Solutions</a>
+        <a href="artificial_intelligence.html">Discover AI Solutions</a>
     </div>
 
           <div class="service">
@@ -176,12 +176,16 @@
             <input type="email" id="user_email" placeholder="Enter your email" required>
 
             <!-- New Package Dropdown -->
-            <label for="package_select">Which Package are you interested in?</label>
+            <label for="package_select">Which Service are you interested in?</label>
             <select id="package_select" required>
                 <option value="Not Sure">Not Sure</option>
-                <option value="Basic Package">Basic Package</option>
-                <option value="Plus Package">Plus Package</option>
-                <option value="Deluxe Package">Deluxe Package</option>
+                <option value="Software Development">Software Development</option>
+                <option value="Web Design">Web Design</option>
+                <option value="Web3.0">Web3.0</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Google My Business">Google My Business</option>
+                <option value="Custom Analytics">Custom Analytics</option>
+                <option value="FB and Google Ads">FB and Google Ads</option>
             </select>
 
             <textarea id="message" placeholder="Enter your message" required></textarea>
@@ -212,13 +216,13 @@
       <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
       <script src="script.js"></script>
       <script>
-          emailjs.init('your_public_key');
+          emailjs.init('service_ni1jgq2');
 
           const contactForm = document.getElementById('contact-form');
           if (contactForm) {
               contactForm.addEventListener('submit', function(event) {
                   event.preventDefault();
-                  emailjs.sendForm('your_service_id', 'your_template_id', this)
+                  emailjs.sendForm('service_ni1jgq2', 'template_rd9i0ip', this)
                       .then(function() {
                           alert('Email sent successfully!');
                       }, function(error) {

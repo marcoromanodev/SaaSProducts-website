@@ -22,8 +22,17 @@ html, body {
     }
 
     .hero-title {
-        font-size: 1.5em; /* Smaller font for mobile */
+        font-size: 1.2em; /* Smaller font for mobile */
         line-height: 1.2;
+    }
+
+    .hero-title .top-line,
+    .hero-title .bottom-line {
+        font-size: 2.5em; /* Reduce headline size on mobile */
+    }
+
+    .hero-title .subtitle {
+        font-size: 0.9em;
     }
 
     .packages-container {
