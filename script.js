@@ -25,11 +25,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const scrollTop = window.scrollY;
             const viewportHeight = window.innerHeight;
             const docHeight = document.documentElement.scrollHeight;
-            const threshold = 100;
+            const threshold = Math.min(100, docHeight - viewportHeight - 1);
+
+            if (docHeight <= viewportHeight) {
+                scrollText.innerText = "Scroll Down";
+                return;
+            }
 
             if (scrollTop + viewportHeight >= docHeight - threshold) {
                 scrollText.innerText = "Scroll Up";
-            } else if (scrollTop <= threshold) {
+            } else {
                 scrollText.innerText = "Scroll Down";
             }
         };
@@ -40,12 +45,21 @@ document.addEventListener("DOMContentLoaded", function () {
         updateScrollIndicator();
 
         scrollIndicator.addEventListener('click', function() {
-            const about = document.querySelector('.about-section');
-            if (about) {
-                window.scrollTo({
-                    top: about.offsetTop,
-                    behavior: 'smooth'
-                });
+            const scrollTop = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const threshold = Math.min(100, docHeight - viewportHeight - 1);
+
+            if (docHeight > viewportHeight && scrollTop + viewportHeight >= docHeight - threshold) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const about = document.querySelector('.about-section');
+                if (about) {
+                    window.scrollTo({
+                        top: about.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     }
