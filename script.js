@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         window.addEventListener("scroll", updateScrollIndicator);
+        window.addEventListener("load", updateScrollIndicator);
+        window.addEventListener("resize", updateScrollIndicator);
         updateScrollIndicator();
 
         scrollIndicator.addEventListener('click', function() {
