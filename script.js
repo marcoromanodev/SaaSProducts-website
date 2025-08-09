@@ -21,10 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (scrollIndicator && scrollText) {
-        const contactSection = document.querySelector('.contact-section');
+        // Observe either the contact section or the footer to determine when to switch
+        const endSection = document.querySelector('.contact-section') || document.querySelector('footer');
 
-        if (contactSection) {
-            const contactObserver = new IntersectionObserver((entries) => {
+        if (endSection) {
+            const endObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         scrollIndicator.classList.add('scroll-up');
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }, { threshold: 0.1 });
 
-            contactObserver.observe(contactSection);
+            endObserver.observe(endSection);
         } else {
             const hasReachedBottom = () => Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 1;
 
