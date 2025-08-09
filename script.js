@@ -21,28 +21,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (scrollIndicator && scrollText) {
-        const hasReachedBottom = () => {
-            return Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 1;
-        };
+        const contactSection = document.querySelector('.contact-section');
 
-        const updateScrollIndicator = () => {
-            if (hasReachedBottom()) {
-                scrollIndicator.classList.add('scroll-up');
-                scrollText.innerText = "Scroll Up";
-            } else {
-                scrollIndicator.classList.remove('scroll-up');
-                scrollText.innerText = "Scroll Down";
-            }
-        };
+        if (contactSection) {
+            const contactObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        scrollIndicator.classList.add('scroll-up');
+                        scrollText.innerText = "Scroll Up";
+                    } else {
+                        scrollIndicator.classList.remove('scroll-up');
+                        scrollText.innerText = "Scroll Down";
+                    }
+                });
+            }, { threshold: 0.1 });
 
-        window.addEventListener('scroll', updateScrollIndicator, { passive: true });
-        window.addEventListener('load', updateScrollIndicator);
-        window.addEventListener('resize', updateScrollIndicator);
-        window.addEventListener('orientationchange', updateScrollIndicator);
-        updateScrollIndicator();
+            contactObserver.observe(contactSection);
+        } else {
+            const hasReachedBottom = () => Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 1;
+
+            const updateScrollIndicator = () => {
+                if (window.scrollY > 0 && hasReachedBottom()) {
+                    scrollIndicator.classList.add('scroll-up');
+                    scrollText.innerText = "Scroll Up";
+                } else {
+                    scrollIndicator.classList.remove('scroll-up');
+                    scrollText.innerText = "Scroll Down";
+                }
+            };
+
+            window.addEventListener('scroll', updateScrollIndicator, { passive: true });
+            window.addEventListener('load', updateScrollIndicator);
+            window.addEventListener('resize', updateScrollIndicator);
+            window.addEventListener('orientationchange', updateScrollIndicator);
+        }
 
         scrollIndicator.addEventListener('click', function () {
-            if (hasReachedBottom()) {
+            if (scrollIndicator.classList.contains('scroll-up')) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 const about = document.querySelector('.about-section');
