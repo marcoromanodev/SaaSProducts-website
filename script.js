@@ -60,9 +60,15 @@ document.addEventListener("DOMContentLoaded", function () {
             if (scrollIndicator.classList.contains('scroll-up')) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
-                const about = document.querySelector('.about-section');
-                if (about) {
-                    about.scrollIntoView({ behavior: 'smooth' });
+                const hero = document.querySelector('.hero-section');
+                let target = hero ? hero.nextElementSibling : null;
+
+                while (target && (target.classList.contains('line-through') || target.id === 'scroll-indicator')) {
+                    target = target.nextElementSibling;
+                }
+
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
                 } else {
                     window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
                 }
