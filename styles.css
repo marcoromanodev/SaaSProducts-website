@@ -216,10 +216,10 @@ body::before {
     top: 5px;
     left: 50%;
     transform: translateX(-50%);
-    animation: scroll 1.5s infinite;
+    animation: scroll-down 1.5s infinite;
 }
 
-@keyframes scroll {
+@keyframes scroll-down {
     0% {
         top: 5px;
     }

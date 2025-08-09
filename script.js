@@ -22,15 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (scrollIndicator && scrollText) {
         const hasReachedBottom = () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-            const documentHeight = Math.max(
-                document.documentElement.scrollHeight,
-                document.body.scrollHeight,
-                document.documentElement.offsetHeight,
-                document.body.offsetHeight
-            );
-            return scrollTop + windowHeight >= documentHeight - 5; // small threshold for precision
+            return Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 1;
         };
 
         const updateScrollIndicator = () => {
@@ -46,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener('scroll', updateScrollIndicator, { passive: true });
         window.addEventListener('load', updateScrollIndicator);
         window.addEventListener('resize', updateScrollIndicator);
+        window.addEventListener('orientationchange', updateScrollIndicator);
         updateScrollIndicator();
 
         scrollIndicator.addEventListener('click', function () {
