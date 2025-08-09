@@ -1178,3 +1178,9 @@ div.line-through {
     position: relative;
     z-index: 1;
 }
+
+/* Make "Consult Us" buttons bold across the site */
+.button,
+.add-to-cart-btn {
+    font-weight: bold;
+}
