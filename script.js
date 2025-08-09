@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (scrollIndicator && scrollText) {
-        const hasPassedHalfway = () => {
+        const hasReachedBottom = () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
             const documentHeight = Math.max(
@@ -30,12 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.documentElement.offsetHeight,
                 document.body.offsetHeight
             );
-            const scrollableHeight = documentHeight - windowHeight;
-            return scrollableHeight > 0 && scrollTop >= scrollableHeight / 2;
+            return scrollTop + windowHeight >= documentHeight - 5; // small threshold for precision
         };
 
         const updateScrollIndicator = () => {
-            if (hasPassedHalfway()) {
+            if (hasReachedBottom()) {
                 scrollIndicator.classList.add('scroll-up');
                 scrollText.innerText = "Scroll Up";
             } else {
@@ -50,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateScrollIndicator();
 
         scrollIndicator.addEventListener('click', function () {
-            if (hasPassedHalfway()) {
+            if (hasReachedBottom()) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 const about = document.querySelector('.about-section');
