@@ -1205,3 +1205,44 @@ div.line-through {
     50% { transform: translateY(-5px); }
     100% { transform: translateY(0); }
 }
+
+/* Fixed language toggle button */
+#language-btn {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #444;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Google Translate widget container */
+#google_translate_element {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* Chatbot button */
+#chatbot-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #444;
+    color: #fff;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 24px;
+    text-decoration: none;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

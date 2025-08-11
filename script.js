@@ -184,3 +184,39 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 }, revealOptions);
 
 revealSections.forEach(section => revealObserver.observe(section));
+
+// Add language toggle and chatbot buttons across the site
+document.addEventListener('DOMContentLoaded', function () {
+    // Language button with Google icon
+    const langBtn = document.createElement('button');
+    langBtn.id = 'language-btn';
+    langBtn.innerHTML = '<i class="fab fa-google"></i>';
+    document.body.appendChild(langBtn);
+
+    // Container for Google Translate widget
+    const translateDiv = document.createElement('div');
+    translateDiv.id = 'google_translate_element';
+    translateDiv.classList.add('hidden');
+    document.body.appendChild(translateDiv);
+
+    langBtn.addEventListener('click', () => {
+        translateDiv.classList.toggle('hidden');
+    });
+
+    // Chatbot button linking to ChatGPT 5
+    const chatBtn = document.createElement('a');
+    chatBtn.id = 'chatbot-btn';
+    chatBtn.href = 'https://chat.openai.com/?model=gpt-5';
+    chatBtn.target = '_blank';
+    chatBtn.innerHTML = '<i class="fas fa-comments"></i>';
+    document.body.appendChild(chatBtn);
+
+    // Load Google Translate script
+    window.googleTranslateElementInit = function() {
+        new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    };
+    const gtScript = document.createElement('script');
+    gtScript.type = 'text/javascript';
+    gtScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(gtScript);
+});
