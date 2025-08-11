@@ -104,6 +104,9 @@ if (withDesign && withoutDesign) {
             el.classList.remove('hidden');
         });
     });
+
+    // Default to "Without Design Fee" on page load
+    withoutDesign.click();
 }
 
 // Pre-fill the package dropdown and handle 'Consult Us' button clicks
