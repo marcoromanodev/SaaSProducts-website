@@ -1186,3 +1186,22 @@ div.line-through {
 .add-to-cart-btn {
     font-weight: bold;
 }
+
+/* Star icon styling */
+.fa-star {
+    color: #FFD700;
+    -webkit-text-stroke: 1px #000;
+    text-shadow: -1px -1px 0 #000,
+                 1px -1px 0 #000,
+                 -1px 1px 0 #000,
+                 1px 1px 0 #000,
+                 2px 0 2px rgba(0,0,0,0.6);
+    animation: star-rise 1.5s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes star-rise {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
