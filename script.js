@@ -138,7 +138,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (selectedPackage) {
             const packageSelect = document.getElementById('package_select');
             if (packageSelect) {
-                packageSelect.value = selectedPackage;
+                for (const option of packageSelect.options) {
+                    if (option.value.toLowerCase().startsWith(selectedPackage.toLowerCase())) {
+                        packageSelect.value = option.value;
+                        break;
+                    }
+                }
             }
         }
     }
