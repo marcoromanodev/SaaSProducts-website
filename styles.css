@@ -1221,6 +1221,11 @@ div.line-through {
     z-index: 1000;
 }
 
+#language-btn img {
+    width: 20px;
+    height: 20px;
+}
+
 /* Google Translate widget container */
 #google_translate_element {
     position: fixed;
