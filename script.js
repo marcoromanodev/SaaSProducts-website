@@ -195,17 +195,17 @@ document.addEventListener('DOMContentLoaded', function () {
     utilContainer.id = 'utility-btn-container';
     document.body.appendChild(utilContainer);
 
-    // Language button with Google Translate PNG icon
-    const langBtn = document.createElement('button');
-    langBtn.id = 'language-btn';
-    langBtn.innerHTML = '<img src="IMG_1870.png" alt="Translate" />';
-    utilContainer.appendChild(langBtn);
-
     // Chatbot toggle button
     const chatBtn = document.createElement('button');
     chatBtn.id = 'chatbot-btn';
     chatBtn.innerHTML = '<i class="fas fa-comments"></i>';
     utilContainer.appendChild(chatBtn);
+
+    // Language button with Google Translate PNG icon
+    const langBtn = document.createElement('button');
+    langBtn.id = 'language-btn';
+    langBtn.innerHTML = '<img src="IMG_1870.png" alt="Translate" />';
+    utilContainer.appendChild(langBtn);
 
     // Container for Google Translate widget
     const translateDiv = document.createElement('div');
