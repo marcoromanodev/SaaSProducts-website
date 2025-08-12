@@ -190,10 +190,10 @@ revealSections.forEach(section => revealObserver.observe(section));
 
 // Add language toggle and chatbot buttons across the site
 document.addEventListener('DOMContentLoaded', function () {
-    // Language button with Google icon
+    // Language button with Google Translate PNG icon
     const langBtn = document.createElement('button');
     langBtn.id = 'language-btn';
-    langBtn.innerHTML = '<i class="fab fa-google"></i>';
+    langBtn.innerHTML = '<img src="IMG_1870.png" alt="Translate" />';
     document.body.appendChild(langBtn);
 
     // Container for Google Translate widget
