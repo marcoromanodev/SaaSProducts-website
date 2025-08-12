@@ -1212,18 +1212,16 @@ div.line-through {
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #444;
-    color: #fff;
-    padding: 10px 20px;
+    background: transparent;
+    padding: 0;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     z-index: 1000;
 }
 
 #language-btn img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 
 /* Google Translate widget container */
