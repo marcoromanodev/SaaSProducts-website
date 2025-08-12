@@ -1266,6 +1266,10 @@ div.line-through {
     z-index: 1000;
 }
 
+#chat-widget.hidden {
+    display: none;
+}
+
 #chat-log {
     flex: 1;
     padding: 10px;
