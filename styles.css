@@ -1294,33 +1294,3 @@ div.line-through {
     padding: 10px 15px;
     cursor: pointer;
 }
-
-/* Cartoon hub animation styles */
-#cartoon-hub {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 20px auto;
-}
-
-#blue-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 200px;
-    height: 80px;
-    background-color: #1e90ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#blue-container img {
-    max-height: 60%;
-}
-
-#clothing-animation {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
