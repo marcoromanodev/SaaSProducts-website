@@ -241,11 +241,12 @@ document.addEventListener('DOMContentLoaded', function () {
         chatWidget.classList.add('hidden');
     });
 
-    appendMessage('AI', 'Hi! Ask me anything about SaaS Productized Co—services, pricing, or timelines.');
+    appendMessage('AI', 'Hi! Ask me anything about SaaS Productized Co or whatever else you are curious about.');
 
     const knowledgeBase = [
         { match: ['hi', 'hello', 'hey'], response: 'Hi there! How can I help you today?' },
         { match: ['price', 'cost', 'pricing'], response: 'We offer tiered packages for web design, ads, AI, and more. Pick the package that fits your needs or use the contact form for a tailored quote.' },
+        { match: ['what is this', 'what is this site', 'who are you'], response: 'This is the SaaS Productized Co assistant. I can guide you through our services, answer general questions, or point you to the right package.' },
         { match: ['ai', 'artificial intelligence', 'automation'], response: 'Our AI services cover chatbots, automation, and integrations. Tell me your use case and I can recommend the right package.' },
         { match: ['web3', 'blockchain'], response: 'We provide Web3 consulting, NFT support, and blockchain integrations. Share your goals and we will map out the best approach.' },
         { match: ['ads', 'google', 'facebook', 'marketing'], response: 'We manage Google and Facebook ad campaigns, including strategy, creative, and optimization to boost your ROI.' },
@@ -259,12 +260,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function findAnswer(message) {
         const normalized = message.toLowerCase();
+        const timeRegex = /\btime\b/;
+        if (timeRegex.test(normalized)) {
+            const now = new Date();
+            return `It is currently ${now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' })}.`;
+        }
         for (const entry of knowledgeBase) {
             if (entry.match.some(keyword => normalized.includes(keyword))) {
                 return entry.response;
             }
         }
-        return 'I can help with SaaS Productized Co questions like services, pricing, timelines, or how to contact us.';
+        return "I'm here to help with anything—ask about SaaS Productized Co, business ideas, or any other topic on your mind.";
     }
 
     async function sendChatMessage(message) {
