@@ -1270,10 +1270,59 @@ div.line-through {
     display: none;
 }
 
+#chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1f2937;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+#chat-close {
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 #chat-log {
     flex: 1;
     padding: 10px;
     overflow-y: auto;
+}
+
+#chat-config {
+    padding: 10px;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#chat-api-key {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+#chat-save-key {
+    align-self: flex-end;
+    padding: 6px 10px;
+    background-color: #1f2937;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.chat-hint {
+    margin: 0;
+    font-size: 12px;
+    color: #555;
 }
 
 #chat-input-container {

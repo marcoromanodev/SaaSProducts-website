@@ -222,9 +222,18 @@ document.addEventListener('DOMContentLoaded', function () {
     chatWidget.id = 'chat-widget';
     chatWidget.classList.add('hidden');
     chatWidget.innerHTML = `
+        <div id="chat-header">
+            <span>Ask our AI</span>
+            <button id="chat-close" aria-label="Close chat">×</button>
+        </div>
         <div id="chat-log"></div>
+        <div id="chat-config">
+            <input type="password" id="chat-api-key" placeholder="Enter your OpenAI API key" />
+            <button id="chat-save-key">Save key</button>
+            <p class="chat-hint">Key is stored locally in your browser.</p>
+        </div>
         <div id="chat-input-container">
-            <input type="text" id="chat-input" placeholder="Ask a question..." />
+            <input type="text" id="chat-input" placeholder="Ask a question about SaaS Productized Co or anything else..." />
             <button id="chat-send">Send</button>
         </div>`;
     document.body.appendChild(chatWidget);
@@ -233,8 +242,38 @@ document.addEventListener('DOMContentLoaded', function () {
         chatWidget.classList.toggle('hidden');
     });
 
+    document.getElementById('chat-close').addEventListener('click', () => {
+        chatWidget.classList.add('hidden');
+    });
+
+    const apiKeyInput = document.getElementById('chat-api-key');
+    const saveKeyButton = document.getElementById('chat-save-key');
+    const storedKey = localStorage.getItem('chat_api_key') || '';
+    if (storedKey) {
+        apiKeyInput.value = storedKey;
+    }
+
+    saveKeyButton.addEventListener('click', () => {
+        const trimmedKey = apiKeyInput.value.trim();
+        if (!trimmedKey) {
+            alert('Please enter a valid OpenAI API key.');
+            return;
+        }
+        localStorage.setItem('chat_api_key', trimmedKey);
+        alert('API key saved locally. You can now chat.');
+    });
+
+    function resolveApiKey() {
+        return apiKeyInput.value.trim() || localStorage.getItem('chat_api_key') || window.OPENAI_API_KEY || '';
+    }
+
+    appendMessage('AI', 'Hi! I am the SaaS Productized Co assistant. Ask me anything about the website or general questions. To get replies, provide an OpenAI API key below (kept in your browser only).');
+
     async function sendChatMessage(message) {
-        const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY';
+        const OPENAI_API_KEY = resolveApiKey();
+        if (!OPENAI_API_KEY) {
+            throw new Error('missing_api_key');
+        }
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
@@ -242,13 +281,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 'Authorization': `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
-                model: 'gpt-3.5-turbo',
+                model: 'gpt-4o-mini',
                 messages: [
-                    { role: 'system', content: 'You are an AI assistant for the SaaS Productized Co website. Answer questions about the site.' },
+                    { role: 'system', content: 'You are an AI assistant for the SaaS Productized Co website. Answer questions about the site and provide general helpful responses when asked. Keep answers concise and friendly.' },
                     { role: 'user', content: message }
                 ]
             })
         });
+        if (!response.ok) {
+            const errorBody = await response.json().catch(() => ({}));
+            throw new Error(errorBody.error?.message || 'Unable to reach the AI service.');
+        }
         const data = await response.json();
         return data.choices && data.choices[0] && data.choices[0].message ? data.choices[0].message.content : 'Sorry, I had trouble responding.';
     }
@@ -268,10 +311,23 @@ document.addEventListener('DOMContentLoaded', function () {
         appendMessage('You', userText);
         input.value = '';
         try {
+            appendMessage('AI', 'Thinking...');
             const reply = await sendChatMessage(userText);
+            const log = document.getElementById('chat-log');
+            log.removeChild(log.lastChild);
             appendMessage('AI', reply);
         } catch (e) {
-            appendMessage('AI', 'There was an error contacting the assistant.');
+            const errorText = e.message === 'missing_api_key'
+                ? 'Please enter your OpenAI API key above to chat.'
+                : 'There was an error contacting the assistant: ' + e.message;
+            appendMessage('AI', errorText);
+        }
+    });
+
+    document.getElementById('chat-input').addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            document.getElementById('chat-send').click();
         }
     });
 
