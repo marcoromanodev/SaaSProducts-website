@@ -1294,33 +1294,11 @@ div.line-through {
     overflow-y: auto;
 }
 
-#chat-config {
-    padding: 10px;
-    border-top: 1px solid #eee;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-#chat-api-key {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-#chat-save-key {
-    align-self: flex-end;
-    padding: 6px 10px;
-    background-color: #1f2937;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
 .chat-hint {
     margin: 0;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
     font-size: 12px;
     color: #555;
 }

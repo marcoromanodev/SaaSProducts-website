@@ -227,11 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <button id="chat-close" aria-label="Close chat">×</button>
         </div>
         <div id="chat-log"></div>
-        <div id="chat-config">
-            <input type="password" id="chat-api-key" placeholder="Enter your OpenAI API key" />
-            <button id="chat-save-key">Save key</button>
-            <p class="chat-hint">Key is stored locally in your browser.</p>
-        </div>
+        <p class="chat-hint">No setup needed—this assistant runs locally with built-in answers.</p>
         <div id="chat-input-container">
             <input type="text" id="chat-input" placeholder="Ask a question about SaaS Productized Co or anything else..." />
             <button id="chat-send">Send</button>
@@ -246,54 +242,33 @@ document.addEventListener('DOMContentLoaded', function () {
         chatWidget.classList.add('hidden');
     });
 
-    const apiKeyInput = document.getElementById('chat-api-key');
-    const saveKeyButton = document.getElementById('chat-save-key');
-    const storedKey = localStorage.getItem('chat_api_key') || '';
-    if (storedKey) {
-        apiKeyInput.value = storedKey;
-    }
+    appendMessage('AI', 'Hi! I am the SaaS Productized Co assistant. Ask me anything about the website or general questions and I will reply instantly without needing any API keys.');
 
-    saveKeyButton.addEventListener('click', () => {
-        const trimmedKey = apiKeyInput.value.trim();
-        if (!trimmedKey) {
-            alert('Please enter a valid OpenAI API key.');
-            return;
+    const knowledgeBase = [
+        { match: ['price', 'cost', 'pricing'], response: 'We offer tiered packages for web design, ads, AI, and more. Pick the package that fits your needs or use the contact form for a tailored quote.' },
+        { match: ['ai', 'artificial intelligence', 'automation'], response: 'Our AI services cover chatbots, automation, and integrations. Tell me your use case and I can recommend the right package.' },
+        { match: ['web3', 'blockchain'], response: 'We provide Web3 consulting, NFT support, and blockchain integrations. Share your goals and we will map out the best approach.' },
+        { match: ['ads', 'google', 'facebook', 'marketing'], response: 'We manage Google and Facebook ad campaigns, including strategy, creative, and optimization to boost your ROI.' },
+        { match: ['seo', 'search'], response: 'We can optimize your site structure, keywords, and content to improve search visibility.' },
+        { match: ['contact', 'support', 'email'], response: 'You can reach us via the contact form at the bottom of the page or by using the provided email address.' },
+        { match: ['timeline', 'turnaround', 'how long'], response: 'Most website builds take 2-4 weeks depending on scope. Marketing and AI timelines vary by project complexity.' },
+        { match: ['payment', 'pay', 'deposit'], response: 'Projects typically start with a deposit followed by milestone-based payments. We can confirm details when you share your needs.' },
+        { match: ['package', 'plan', 'offer'], response: 'Browse our package list on the site. If you need a custom plan, send us a note through the contact form.' },
+        { match: ['location', 'where', 'based'], response: 'We work with clients remotely and can collaborate across time zones.' }
+    ];
+
+    function findAnswer(message) {
+        const normalized = message.toLowerCase();
+        for (const entry of knowledgeBase) {
+            if (entry.match.some(keyword => normalized.includes(keyword))) {
+                return entry.response;
+            }
         }
-        localStorage.setItem('chat_api_key', trimmedKey);
-        alert('API key saved locally. You can now chat.');
-    });
-
-    function resolveApiKey() {
-        return apiKeyInput.value.trim() || localStorage.getItem('chat_api_key') || window.OPENAI_API_KEY || '';
+        return 'I am a built-in assistant with helpful info about SaaS Productized Co. Ask about services, pricing, or timelines, or use the contact form for specifics.';
     }
-
-    appendMessage('AI', 'Hi! I am the SaaS Productized Co assistant. Ask me anything about the website or general questions. To get replies, provide an OpenAI API key below (kept in your browser only).');
 
     async function sendChatMessage(message) {
-        const OPENAI_API_KEY = resolveApiKey();
-        if (!OPENAI_API_KEY) {
-            throw new Error('missing_api_key');
-        }
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OPENAI_API_KEY}`
-            },
-            body: JSON.stringify({
-                model: 'gpt-4o-mini',
-                messages: [
-                    { role: 'system', content: 'You are an AI assistant for the SaaS Productized Co website. Answer questions about the site and provide general helpful responses when asked. Keep answers concise and friendly.' },
-                    { role: 'user', content: message }
-                ]
-            })
-        });
-        if (!response.ok) {
-            const errorBody = await response.json().catch(() => ({}));
-            throw new Error(errorBody.error?.message || 'Unable to reach the AI service.');
-        }
-        const data = await response.json();
-        return data.choices && data.choices[0] && data.choices[0].message ? data.choices[0].message.content : 'Sorry, I had trouble responding.';
+        return findAnswer(message);
     }
 
     function appendMessage(sender, text) {
@@ -317,10 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
             log.removeChild(log.lastChild);
             appendMessage('AI', reply);
         } catch (e) {
-            const errorText = e.message === 'missing_api_key'
-                ? 'Please enter your OpenAI API key above to chat.'
-                : 'There was an error contacting the assistant: ' + e.message;
-            appendMessage('AI', errorText);
+            appendMessage('AI', 'There was an error creating a response. Please try again.');
         }
     });
 
