@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chatWidget.classList.add('hidden');
     });
 
-    appendMessage('AI', 'Hi! I am the SaaS Productized Co assistant. Ask me anything about the website or general questions and I will reply instantly without needing any API keys.');
+    appendMessage('AI', 'Hi! Ask me anything about SaaS Productized Co—services, pricing, or timelines.');
 
     const knowledgeBase = [
         { match: ['price', 'cost', 'pricing'], response: 'We offer tiered packages for web design, ads, AI, and more. Pick the package that fits your needs or use the contact form for a tailored quote.' },
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return entry.response;
             }
         }
-        return 'I am a built-in assistant with helpful info about SaaS Productized Co. Ask about services, pricing, or timelines, or use the contact form for specifics.';
+        return 'I can help with SaaS Productized Co questions like services, pricing, timelines, or how to contact us.';
     }
 
     async function sendChatMessage(message) {
