@@ -227,7 +227,6 @@ document.addEventListener('DOMContentLoaded', function () {
             <button id="chat-close" aria-label="Close chat">×</button>
         </div>
         <div id="chat-log"></div>
-        <p class="chat-hint">No setup needed—this assistant runs locally with built-in answers.</p>
         <div id="chat-input-container">
             <input type="text" id="chat-input" placeholder="Ask a question about SaaS Productized Co or anything else..." />
             <button id="chat-send">Send</button>
@@ -245,6 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
     appendMessage('AI', 'Hi! Ask me anything about SaaS Productized Co—services, pricing, or timelines.');
 
     const knowledgeBase = [
+        { match: ['hi', 'hello', 'hey'], response: 'Hi there! How can I help you today?' },
         { match: ['price', 'cost', 'pricing'], response: 'We offer tiered packages for web design, ads, AI, and more. Pick the package that fits your needs or use the contact form for a tailored quote.' },
         { match: ['ai', 'artificial intelligence', 'automation'], response: 'Our AI services cover chatbots, automation, and integrations. Tell me your use case and I can recommend the right package.' },
         { match: ['web3', 'blockchain'], response: 'We provide Web3 consulting, NFT support, and blockchain integrations. Share your goals and we will map out the best approach.' },
