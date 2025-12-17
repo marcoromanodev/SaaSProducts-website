@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const knowledgeBase = [
         { match: ['hi', 'hello', 'hey'], response: 'Hi there! How can I help you today?' },
         { match: ['price', 'cost', 'pricing'], response: 'We offer tiered packages for web design, ads, AI, and more. Pick the package that fits your needs or use the contact form for a tailored quote.' },
-        { match: ['what is this', 'what is this site', 'who are you'], response: 'This is the SaaS Productized Co assistant. I can guide you through our services, answer general questions, or point you to the right package.' },
+        { match: ['what is this', 'what is this site', 'who are you', 'what is this company', 'company about'], response: 'This is the SaaS Productized Co assistant. I can guide you through our services, answer general questions, or point you to the right package.' },
         { match: ['ai', 'artificial intelligence', 'automation'], response: 'Our AI services cover chatbots, automation, and integrations. Tell me your use case and I can recommend the right package.' },
         { match: ['web3', 'blockchain'], response: 'We provide Web3 consulting, NFT support, and blockchain integrations. Share your goals and we will map out the best approach.' },
         { match: ['ads', 'google', 'facebook', 'marketing'], response: 'We manage Google and Facebook ad campaigns, including strategy, creative, and optimization to boost your ROI.' },
@@ -265,8 +265,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const now = new Date();
             return `It is currently ${now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' })}.`;
         }
+
+        const escapeRegex = (keyword) => keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const matchesKeyword = (keyword) => {
+            const regex = new RegExp(`\\b${escapeRegex(keyword)}\\b`);
+            return regex.test(normalized);
+        };
+
         for (const entry of knowledgeBase) {
-            if (entry.match.some(keyword => normalized.includes(keyword))) {
+            if (entry.match.some(matchesKeyword)) {
                 return entry.response;
             }
         }
