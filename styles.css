@@ -1262,10 +1262,11 @@ div.line-through {
 }
 
 .chat-sign-arrow {
-    --arrow-rotate: 230deg;
+    --arrow-rotate: 90deg;
     width: 120px;
     height: 3px;
-    margin-left: 28px;
+    margin-left: 0;
+    align-self: center;
     background: rgba(0, 255, 255, 0.9);
     display: block;
     position: relative;
