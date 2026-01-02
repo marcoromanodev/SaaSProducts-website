@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
     chatSign.id = 'chat-sign';
     chatSign.innerHTML = `
         <span class="chat-sign-text">Let’s Talk!</span>
-        <span class="chat-sign-arrow" aria-hidden="true">➤</span>
+        <span class="chat-sign-arrow" aria-hidden="true"></span>
     `;
     document.body.appendChild(chatSign);
 
