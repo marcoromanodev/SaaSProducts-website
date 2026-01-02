@@ -1233,39 +1233,59 @@ div.line-through {
 #chat-sign {
     position: fixed;
     bottom: 95px;
-    left: 90px;
+    left: 20px;
     display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 18px;
-    border-radius: 16px;
-    border: 2px solid rgba(0, 255, 255, 0.7);
-    background: linear-gradient(135deg, rgba(5, 0, 20, 0.9), rgba(0, 10, 40, 0.95));
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+    border: none;
+    background: none;
     color: #e9feff;
     font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-    font-size: 16px;
-    letter-spacing: 1px;
     text-transform: uppercase;
-    text-shadow: 0 0 6px rgba(0, 255, 255, 0.8),
-        0 0 16px rgba(255, 0, 255, 0.8),
-        0 0 32px rgba(0, 255, 255, 0.6);
-    box-shadow: 0 0 18px rgba(0, 255, 255, 0.6),
-        0 0 35px rgba(255, 0, 255, 0.5),
-        inset 0 0 12px rgba(0, 255, 255, 0.4);
     z-index: 1000;
     animation: neon-flicker 4.5s infinite, neon-float 6s ease-in-out infinite;
     pointer-events: none;
 }
 
 .chat-sign-text {
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(0, 255, 255, 0.9);
+    text-shadow: 2px 2px 0 rgba(0, 140, 140, 0.65),
+        0 0 10px rgba(0, 255, 255, 0.9),
+        0 0 22px rgba(255, 0, 255, 0.8),
+        0 0 38px rgba(0, 255, 255, 0.7);
 }
 
 .chat-sign-arrow {
-    font-size: 20px;
-    transform: rotate(205deg);
-    display: inline-block;
+    --arrow-rotate: 230deg;
+    width: 120px;
+    height: 3px;
+    margin-left: 28px;
+    background: rgba(0, 255, 255, 0.9);
+    display: block;
+    position: relative;
+    transform: rotate(var(--arrow-rotate));
+    transform-origin: left center;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.8))
+        drop-shadow(0 0 14px rgba(255, 0, 255, 0.7));
     animation: arrow-pulse 1.8s ease-in-out infinite;
+}
+
+.chat-sign-arrow::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-right: 3px solid rgba(0, 255, 255, 0.95);
+    border-top: 3px solid rgba(0, 255, 255, 0.95);
+    transform: translateY(-50%) rotate(45deg);
 }
 
 @keyframes neon-flicker {
@@ -1291,10 +1311,10 @@ div.line-through {
 
 @keyframes arrow-pulse {
     0%, 100% {
-        transform: rotate(205deg) scale(1);
+        transform: rotate(var(--arrow-rotate)) scale(1);
     }
     50% {
-        transform: rotate(205deg) scale(1.15);
+        transform: rotate(var(--arrow-rotate)) scale(1.12);
     }
 }
 
