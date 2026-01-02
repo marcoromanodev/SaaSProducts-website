@@ -1230,6 +1230,74 @@ div.line-through {
     text-decoration: none;
 }
 
+#chat-sign {
+    position: fixed;
+    bottom: 95px;
+    left: 90px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 16px;
+    border: 2px solid rgba(0, 255, 255, 0.7);
+    background: linear-gradient(135deg, rgba(5, 0, 20, 0.9), rgba(0, 10, 40, 0.95));
+    color: #e9feff;
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 0 6px rgba(0, 255, 255, 0.8),
+        0 0 16px rgba(255, 0, 255, 0.8),
+        0 0 32px rgba(0, 255, 255, 0.6);
+    box-shadow: 0 0 18px rgba(0, 255, 255, 0.6),
+        0 0 35px rgba(255, 0, 255, 0.5),
+        inset 0 0 12px rgba(0, 255, 255, 0.4);
+    z-index: 1000;
+    animation: neon-flicker 4.5s infinite, neon-float 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.chat-sign-text {
+    font-weight: 700;
+}
+
+.chat-sign-arrow {
+    font-size: 20px;
+    transform: rotate(205deg);
+    display: inline-block;
+    animation: arrow-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes neon-flicker {
+    0%, 18%, 22%, 25%, 53%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0.6;
+    }
+    56% {
+        opacity: 0.85;
+    }
+}
+
+@keyframes neon-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes arrow-pulse {
+    0%, 100% {
+        transform: rotate(205deg) scale(1);
+    }
+    50% {
+        transform: rotate(205deg) scale(1.15);
+    }
+}
+
 #language-btn {
     background: none;
     border: none;
