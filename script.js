@@ -201,6 +201,15 @@ document.addEventListener('DOMContentLoaded', function () {
     chatBtn.innerHTML = '<i class="fas fa-comments"></i>';
     utilContainer.appendChild(chatBtn);
 
+    // Neon sign pointing to the AI chat button
+    const chatSign = document.createElement('div');
+    chatSign.id = 'chat-sign';
+    chatSign.innerHTML = `
+        <span class="chat-sign-text">Let’s Talk!</span>
+        <span class="chat-sign-arrow" aria-hidden="true">➤</span>
+    `;
+    document.body.appendChild(chatSign);
+
     // Language button with Google Translate PNG icon
     const langBtn = document.createElement('button');
     langBtn.id = 'language-btn';
