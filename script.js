@@ -241,12 +241,15 @@ document.addEventListener('DOMContentLoaded', function () {
         chatWidget.classList.add('hidden');
     });
 
-    appendMessage('AI', 'Hi! Ask me anything about SaaS Productized Co or whatever else you are curious about.');
+    appendMessage('AI', 'Hi! Ask me anything about SaaS Productized Co, our services, or the wider world.');
 
     const knowledgeBase = [
-        { match: ['hi', 'hello', 'hey'], response: 'Hi there! How can I help you today?' },
+        { match: ['hi', 'hello', 'hey', 'yo'], response: 'Hi there! How can I help you today?' },
         { match: ['price', 'cost', 'pricing'], response: 'We offer tiered packages for web design, ads, AI, and more. Pick the package that fits your needs or use the contact form for a tailored quote.' },
-        { match: ['what is this', 'what is this site', 'who are you', 'what is this company', 'company about'], response: 'This is the SaaS Productized Co assistant. I can guide you through our services, answer general questions, or point you to the right package.' },
+        {
+            match: ['what is this', 'what is this site', 'what’s this website', "what's this website", 'who are you', 'what is this company', 'company about'],
+            response: 'SaaS Productized Co is a B2B SaaS company offering software development, web design, Web3.0, AI solutions, Google My Business, custom analytics, and ad management.'
+        },
         { match: ['ai', 'artificial intelligence', 'automation'], response: 'Our AI services cover chatbots, automation, and integrations. Tell me your use case and I can recommend the right package.' },
         { match: ['web3', 'blockchain'], response: 'We provide Web3 consulting, NFT support, and blockchain integrations. Share your goals and we will map out the best approach.' },
         { match: ['ads', 'google', 'facebook', 'marketing'], response: 'We manage Google and Facebook ad campaigns, including strategy, creative, and optimization to boost your ROI.' },
@@ -255,8 +258,14 @@ document.addEventListener('DOMContentLoaded', function () {
         { match: ['timeline', 'turnaround', 'how long'], response: 'Most website builds take 2-4 weeks depending on scope. Marketing and AI timelines vary by project complexity.' },
         { match: ['payment', 'pay', 'deposit'], response: 'Projects typically start with a deposit followed by milestone-based payments. We can confirm details when you share your needs.' },
         { match: ['package', 'plan', 'offer'], response: 'Browse our package list on the site. If you need a custom plan, send us a note through the contact form.' },
-        { match: ['location', 'where', 'based'], response: 'We work with clients remotely and can collaborate across time zones.' }
+        { match: ['location', 'where', 'based'], response: 'We work with clients remotely and can collaborate across time zones.' },
+        {
+            match: ['weather', 'temperature', 'forecast'],
+            response: 'I can help explain weather terms or give general advice, but I do not have live weather data. Share your city and I can suggest where to check or explain what a forecast means.'
+        }
     ];
+
+    const aiApiEndpoint = '/api/chat';
 
     function findAnswer(message) {
         const normalized = message.toLowerCase();
@@ -277,10 +286,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 return entry.response;
             }
         }
-        return "I'm here to help with anything—ask about SaaS Productized Co, business ideas, or any other topic on your mind.";
+        return "I can answer questions about SaaS Productized Co or general topics. If you need live data (like weather), share your location and I can guide you to the best source.";
     }
 
     async function sendChatMessage(message) {
+        try {
+            const response = await fetch(aiApiEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            });
+
+            if (!response.ok) {
+                throw new Error('AI request failed.');
+            }
+
+            const data = await response.json();
+            const reply = data?.reply?.trim();
+            if (reply) {
+                return reply;
+            }
+        } catch (error) {
+            return findAnswer(message);
+        }
         return findAnswer(message);
     }
 
