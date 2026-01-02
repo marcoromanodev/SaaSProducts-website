@@ -1253,6 +1253,7 @@ div.line-through {
     font-weight: 800;
     font-size: 24px;
     letter-spacing: 2px;
+    margin-left: 6px;
     color: transparent;
     -webkit-text-stroke: 2px rgba(0, 255, 255, 0.9);
     text-shadow: 2px 2px 0 rgba(0, 140, 140, 0.65),
@@ -1263,29 +1264,49 @@ div.line-through {
 
 .chat-sign-arrow {
     --arrow-rotate: 90deg;
-    width: 120px;
-    height: 3px;
-    margin-left: 0;
-    align-self: center;
-    background: rgba(0, 255, 255, 0.9);
+    width: 88px;
+    height: 8px;
+    margin-left: 12px;
+    align-self: flex-start;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(0, 255, 255, 0.35), rgba(0, 255, 255, 0.95), rgba(255, 0, 255, 0.85));
     display: block;
     position: relative;
     transform: rotate(var(--arrow-rotate));
     transform-origin: left center;
+    box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.45),
+        inset 0 -2px 4px rgba(0, 140, 140, 0.55),
+        0 8px 12px rgba(0, 255, 255, 0.35);
     filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.8))
         drop-shadow(0 0 14px rgba(255, 0, 255, 0.7));
     animation: arrow-pulse 1.8s ease-in-out infinite;
 }
 
+.chat-sign-arrow::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    right: 16px;
+    top: 1px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+}
+
 .chat-sign-arrow::after {
     content: '';
     position: absolute;
-    right: -2px;
+    right: -6px;
     top: 50%;
-    width: 12px;
-    height: 12px;
-    border-right: 3px solid rgba(0, 255, 255, 0.95);
-    border-top: 3px solid rgba(0, 255, 255, 0.95);
+    width: 18px;
+    height: 18px;
+    border-right: 4px solid rgba(0, 255, 255, 0.95);
+    border-top: 4px solid rgba(0, 255, 255, 0.95);
+    border-radius: 6px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.65), rgba(0, 255, 255, 0.25));
+    box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 4px rgba(0, 140, 140, 0.55),
+        0 6px 10px rgba(0, 255, 255, 0.35);
     transform: translateY(-50%) rotate(45deg);
 }
 
