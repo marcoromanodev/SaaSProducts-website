@@ -212,9 +212,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const positionChatSign = () => {
         const chatRect = chatBtn.getBoundingClientRect();
+        const signRect = chatSign.getBoundingClientRect();
+        const signWidth = signRect.width || chatSign.offsetWidth;
         const centerX = chatRect.left + (chatRect.width / 2);
-        chatSign.style.left = `${centerX}px`;
-        chatSign.style.setProperty('--chat-sign-offset', '-50%');
+        const desiredLeft = centerX - (signWidth / 2);
+        const gutter = 12;
+        const maxLeft = window.innerWidth - signWidth - gutter;
+        const clampedLeft = Math.min(Math.max(desiredLeft, gutter), maxLeft);
+
+        chatSign.style.left = `${clampedLeft}px`;
+        chatSign.style.setProperty('--chat-sign-offset', '0px');
     };
     positionChatSign();
     window.addEventListener('resize', positionChatSign);
