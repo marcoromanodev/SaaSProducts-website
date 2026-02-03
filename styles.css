@@ -1228,11 +1228,22 @@ div.line-through {
     justify-content: center;
     cursor: pointer;
     text-decoration: none;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.6), 0 0 24px rgba(255, 0, 255, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#chatbot-btn i {
+    text-shadow: 0 0 6px rgba(0, 255, 255, 0.9), 0 0 12px rgba(255, 0, 255, 0.8);
+}
+
+#chatbot-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 16px rgba(0, 255, 255, 0.75), 0 0 30px rgba(255, 0, 255, 0.6);
 }
 
 #chat-sign {
     position: fixed;
-    bottom: 150px;
+    bottom: 190px;
     left: 20px;
     display: inline-flex;
     flex-direction: column;
@@ -1267,6 +1278,7 @@ div.line-through {
     width: 88px;
     height: 8px;
     margin-left: 12px;
+    margin-top: -4px;
     align-self: flex-start;
     border-radius: 999px;
     background: linear-gradient(90deg, rgba(0, 255, 255, 0.35), rgba(0, 255, 255, 0.95), rgba(255, 0, 255, 0.85));
@@ -1338,6 +1350,12 @@ div.line-through {
     50% {
         transform: rotate(var(--arrow-rotate)) scale(1.12);
     }
+}
+
+.logo-container .top-line {
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.75),
+        0 0 16px rgba(255, 0, 255, 0.55),
+        0 0 26px rgba(0, 255, 255, 0.65);
 }
 
 #language-btn {
