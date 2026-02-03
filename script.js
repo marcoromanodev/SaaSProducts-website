@@ -210,6 +210,15 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     document.body.appendChild(chatSign);
 
+    const positionChatSign = () => {
+        const chatRect = chatBtn.getBoundingClientRect();
+        const centerX = chatRect.left + (chatRect.width / 2);
+        chatSign.style.left = `${centerX}px`;
+        chatSign.style.setProperty('--chat-sign-offset', '-50%');
+    };
+    positionChatSign();
+    window.addEventListener('resize', positionChatSign);
+
     // Language button with Google Translate PNG icon
     const langBtn = document.createElement('button');
     langBtn.id = 'language-btn';

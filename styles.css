@@ -1247,7 +1247,7 @@ div.line-through {
     left: 20px;
     display: inline-flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     padding: 0;
     border: none;
@@ -1256,6 +1256,7 @@ div.line-through {
     font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
     text-transform: uppercase;
     z-index: 1000;
+    --chat-sign-offset: 0px;
     animation: neon-flicker 4.5s infinite, neon-float 6s ease-in-out infinite;
     pointer-events: none;
 }
@@ -1264,7 +1265,7 @@ div.line-through {
     font-weight: 800;
     font-size: 24px;
     letter-spacing: 2px;
-    margin-left: 6px;
+    text-align: center;
     color: transparent;
     -webkit-text-stroke: 2px rgba(0, 255, 255, 0.9);
     text-shadow: 2px 2px 0 rgba(0, 140, 140, 0.65),
@@ -1277,9 +1278,8 @@ div.line-through {
     --arrow-rotate: 90deg;
     width: 88px;
     height: 8px;
-    margin-left: 12px;
     margin-top: -4px;
-    align-self: flex-start;
+    align-self: center;
     border-radius: 999px;
     background: linear-gradient(90deg, rgba(0, 255, 255, 0.35), rgba(0, 255, 255, 0.95), rgba(255, 0, 255, 0.85));
     display: block;
@@ -1336,10 +1336,10 @@ div.line-through {
 
 @keyframes neon-float {
     0%, 100% {
-        transform: translateY(0);
+        transform: translateX(var(--chat-sign-offset)) translateY(0);
     }
     50% {
-        transform: translateY(-6px);
+        transform: translateX(var(--chat-sign-offset)) translateY(-6px);
     }
 }
 
@@ -1353,9 +1353,30 @@ div.line-through {
 }
 
 .logo-container .top-line {
-    text-shadow: 0 0 8px rgba(0, 255, 255, 0.75),
-        0 0 16px rgba(255, 0, 255, 0.55),
-        0 0 26px rgba(0, 255, 255, 0.65);
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(0, 160, 255, 0.95);
+    text-shadow: 2px 2px 0 rgba(0, 80, 160, 0.6),
+        0 0 12px rgba(0, 140, 255, 0.9),
+        0 0 26px rgba(0, 120, 255, 0.85),
+        0 0 40px rgba(0, 190, 255, 0.75);
+    animation: neon-flicker 4.5s infinite, neon-blue-pulse 3.2s ease-in-out infinite;
+}
+
+@keyframes neon-blue-pulse {
+    0%, 100% {
+        text-shadow: 2px 2px 0 rgba(0, 80, 160, 0.6),
+            0 0 12px rgba(0, 140, 255, 0.9),
+            0 0 26px rgba(0, 120, 255, 0.85),
+            0 0 40px rgba(0, 190, 255, 0.75);
+    }
+    50% {
+        text-shadow: 2px 2px 0 rgba(0, 100, 200, 0.7),
+            0 0 16px rgba(0, 180, 255, 0.95),
+            0 0 32px rgba(0, 140, 255, 0.9),
+            0 0 48px rgba(0, 210, 255, 0.85);
+    }
 }
 
 #language-btn {
