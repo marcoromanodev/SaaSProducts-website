@@ -1232,7 +1232,7 @@ div.line-through {
 
 #chat-sign {
     position: fixed;
-    bottom: 95px;
+    bottom: 115px;
     left: 20px;
     display: inline-flex;
     flex-direction: column;
